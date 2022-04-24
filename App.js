@@ -1,4 +1,4 @@
-
+import 'react-native-gesture-handler'
 import'react-native-gesture-handler'
 import React from 'react'
 import { Provider } from 'react-native-paper'
@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { theme } from './src/core/theme'
 
 import {
+  
   StartScreen,
   LoginScreen,
   RegisterScreen,
@@ -38,6 +39,7 @@ export default function App() {
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="SurveillerScreen" component={SurveillerScreen} />
+         
 
           <Stack.Screen name="ResetPasswordScreen"component={ResetPasswordScreen}
           />

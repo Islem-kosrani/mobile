@@ -1,29 +1,29 @@
-import React from 'react'
+import React  from 'react'
 import Background from '../components/Background'
 import Logo from '../components/Logo'
 import Header from '../components/Header'
 import Paragraph from '../components/Paragraph'
 import Button from '../components/Button'
+import BackButton from '../components/BackButton'
+import BottomNavigator from '../components/BottomNavigator';
+import { SafeAreaView ,StyleSheet} from 'react-native'
+export default function Dashboard ({ navigation }) {
+ 
 
-export default function Dashboard({ navigation }) {
-  return (
+
+return (
+    
     <Background>
-      <Logo />
-      <Header>Bienvenue</Header>
-      <Paragraph>
-        
-      </Paragraph>
-      <Button
-        mode="outlined"
-        onPress={() =>
-          navigation.reset({
-            index: 0,
-            routes: [{ name: 'StartScreen' }],
-          })
-        }
-      >
-        Logout
-      </Button>
-    </Background>
+       <BackButton goBack={navigation.goBack} />
+      <SafeAreaView style={styles.container}>
+
+      </SafeAreaView>
+      <BottomNavigator></BottomNavigator>  
+        </Background>
   )
 }
+const styles = StyleSheet.create({
+  container:{flex:1,width:'100%',height:'100%',justifyContent:'flex-end'}
+
+  
+})
