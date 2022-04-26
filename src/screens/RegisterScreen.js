@@ -135,6 +135,8 @@ export default function RegisterScreen({ navigation }) {
         uncheckedIcon="circle-o"
         onPress={genderFemme}
       />
+
+      
       <Button
         mode="contained"
         onPress={showAlert}

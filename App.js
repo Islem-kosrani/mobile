@@ -8,12 +8,14 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { theme } from './src/core/theme'
 
 import {
-  
+  EditProfileScreen,
+  ChangermotpasseScreen,
   StartScreen,
   LoginScreen,
   RegisterScreen,
   ResetPasswordScreen,
   SurveillerScreen,
+  ProfileScreen,
   Dashboard,
 } from './src/screens'
 
@@ -39,10 +41,12 @@ export default function App() {
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="SurveillerScreen" component={SurveillerScreen} />
-         
-
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        
           <Stack.Screen name="ResetPasswordScreen"component={ResetPasswordScreen}
           />
+            <Stack.Screen name="ChangermotpasseScreen" component={ChangermotpasseScreen} />
+            <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
         </Stack.Navigator>
 
       
