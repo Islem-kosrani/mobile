@@ -34,7 +34,7 @@ const TabNavigation = (props) => {
           fontSize: 15,
         },
         tabBarStyle: {
-          height: 70,
+          height: 75,
           backgroundColor: "#FFF",
           elevation: 5,
 
@@ -88,13 +88,15 @@ const TabNavigation = (props) => {
           tabBarButton: props => (
             <TouchableWithoutFeedback
               {...props}
-              onPress={() => navigation.navigate('CreateAvis')}>
+              onPress={() => {
+                
+              }}>
               <View
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
                   marginBottom: 50,
-                    marginHorizontal:10
+                   
                 }}>
                  <Icon 
       name={'plus'} 
@@ -111,20 +113,7 @@ const TabNavigation = (props) => {
           ),
         })}
       />
-      {/*  <Tab.Screen
-            name="CreateAvis"
-            getComponent={AddAvisScreen}
-            listeners={{ tabPress: e => props.navigation.navigate('CreateAvis'), }}
-            options={{
-                tabBarLabel: 'Ajouter avis',
-                tabBarColor: COLORS.primaryColor,
-                tabBarIcon:({focused}) => <Image
-                    resizeMode="stretch"
-                    style={{height: 50, width: 60}}
-                    source={require('../../../assets/images/add_avis.png')}
-                />,
-            }}
-        />*/}
+     
       <Tab.Screen
         name="ActivityScreen"
         component={ReservationScreen}
