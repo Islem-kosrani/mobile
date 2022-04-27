@@ -18,6 +18,7 @@ import {
   ProfileScreen,
   Dashboard,
 } from './src/screens'
+import TabNavigation from './src/screens/Dashboard'
 
 const Stack = createStackNavigator()
 
@@ -42,7 +43,7 @@ export default function App() {
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="SurveillerScreen" component={SurveillerScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-        
+          <Stack.Screen name="Main" component={TabNavigation} />
           <Stack.Screen name="ResetPasswordScreen"component={ResetPasswordScreen}
           />
             <Stack.Screen name="ChangermotpasseScreen" component={ChangermotpasseScreen} />
