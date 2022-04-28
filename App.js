@@ -19,6 +19,7 @@ import {
   Dashboard,
 } from './src/screens'
 import TabNavigation from './src/screens/Dashboard'
+import DetailsPublicationScreen from './src/screens/DetailsPublicationScreen'
 
 const Stack = createStackNavigator()
 
@@ -46,6 +47,8 @@ export default function App() {
           <Stack.Screen name="Main" component={TabNavigation} />
           <Stack.Screen name="ResetPasswordScreen"component={ResetPasswordScreen}
           />
+                    <Stack.Screen name="DetailsPublicationScreen" component={DetailsPublicationScreen} />
+
             <Stack.Screen name="ChangermotpasseScreen" component={ChangermotpasseScreen} />
             <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
         </Stack.Navigator>

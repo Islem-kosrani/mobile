@@ -1,48 +1,72 @@
 import React from 'react'
-import { Text, View,SafeAreaView, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import Background from '../components/Background'
 import { Icon } from 'react-native-elements';
+import { Text, View,SafeAreaView, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
 
-export default function AccueilScreen({ navigation }) {
-    const [data,setData] = React.useState([{id:1},{id:2},{id:3},{id:4},{id:5}])
+export default function DetailsPublicationScreen({ navigation }) {
   return (
     <SafeAreaView style={{
         paddingTop:40,
     }}>
-      <View style={{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        padding:25,
-      }}>
-        <Text>Annonces:12</Text>
-
-<View style={{
-  flexDirection:'row'
-}}>
-<Text>Tri par : ...</Text>
-<Icon 
-          name={'arrow-drop-down'} 
-          type={'material-icons'}
-          color={'#0000FF'}
-          size={15}
+        <View style={{
+            backgroundColor:'#0000FF',
+            paddingVertical:10,
+            justifyContent:'center',
+            alignItems:'center',
+        }}>
+            <Text style={{
+                color:'white',
+                fontSize:15,
+               textAlignVertical:'center',
+            }}>Détail de l'annonce</Text>
+             <TouchableOpacity onPress={()=>{
+                navigation.goBack()
+             }} style={{
+                 flexDirection:'row',
+                 position:'absolute',
+                 left:0,
+                 borderRadius:10,
+                 justifyContent:'center',
+               
+             }}>
+                 
+                 <Icon 
+          name={'arrow-left'} 
+          type={'Octicons'}
+          color={'#FFFFFF'}
+          size={50}
           
           />
-
-</View>
-
-      </View>
-         <FlatList
-        data={data}
-        renderItem={(item)=>{
-            return <TouchableOpacity onPress={()=>{
-              navigation.navigate('DetailsPublicationScreen')
-            }}><View style={[styles.card, styles.shadowProp]}>
+         
+             </TouchableOpacity>
+        </View>
+    <View style={[styles.card, styles.shadowProp]}>
             <View style={{
               flexDirection:'row',
               justifyContent:'space-between'
             }}>
-             <Text>Départ dans :</Text><Text>22-04-2022 15:00:00</Text>
+             <TouchableOpacity style={{
+                 flexDirection:'row',
+                 alignItems:'center',
+                 backgroundColor:'green',
+                 width:'100%',
+                 borderRadius:10,
+                 justifyContent:'center',
+                 paddingVertical:5,
+             }}>
+                 <Text style={{
+                     color:'white',
+                     paddingHorizontal:10,
+
+                 }}>Réserver</Text>
+                 <Icon 
+          name={'shopping-cart'} 
+          type={'feather'}
+          color={'#FFFFFF'}
+          size={15}
+          
+          />
+             </TouchableOpacity>
             </View>
             <View style={{
               height:1,
@@ -140,31 +164,72 @@ export default function AccueilScreen({ navigation }) {
               marginVertical:10
             }}/>
             <View style={{
+                paddingHorizontal:40
+            }}>
+            <View style={{
               flexDirection:'row',
               justifyContent:'space-between'
             }}>
 
-
+                
             <View>
             <Text style={styles.txt1}>25kg</Text>
             <Text style={styles.txt2}>Poids</Text>
             </View>
             <View>
-            <Text style={styles.txt1}>15.00$</Text>
+            <Text style={styles.txt1}>15.00TND</Text>
             <Text style={styles.txt2}>Prix/kg</Text>
             </View>
+         
+
+            
+
+
+             </View>
+             <View style={{
+              flexDirection:'row',
+              justifyContent:'space-between'
+            }}>
+
+                
             <View>
-              <View>
-            <Image
+            <Text style={styles.txt1}>15.00TND</Text>
+            <Text style={styles.txt2}>Prix/Enveloppe</Text>
+            </View>
+            <View style={{
+                alignItems:'flex-end'
+            }}>
+            <Text style={styles.txt1}>15.00TND</Text>
+            <Text style={styles.txt2}>Prix/Téléphone</Text>
+            </View>
+         
+
+            
+
+
+             </View>
+            </View>
+           
+          </View>
+          <View style={[styles.card, styles.shadowProp]}>
+              
+            <View style={{
+              flexDirection:'column',
+              justifyContent:'space-between'
+            }}>
+                <Image
   style={styles.image}
   source={{uri:"https://media.istockphoto.com/photos/closeup-portrait-of-her-she-nice-attractive-puzzled-ignorant-girl-picture-id1132758418?k=20&m=1132758418&s=612x612&w=0&h=ca6WVDDblf3um3mdfCSGVpLGfwuyjj5UTLD9rMMHfH4="}}
   resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect on Android
 />
+<Text style={{
+    textAlign:'center',
+    paddingVertical:10
+}}>Ben mamadou lien</Text>
 <View style={{
     flexDirection:'row',
-    alignItems:'flex-start',
-    justifyContent:'flex-start',
-    
+    alignItems:'center',
+    justifyContent:'center'
 }}>
 <Icon 
           name={'star-border'} 
@@ -209,21 +274,74 @@ export default function AccueilScreen({ navigation }) {
           
           />
 </View>
-</View>
+             <View style={{
+                 flexDirection:'row',
+                 justifyContent:'space-between',
+                 
+
+             }}>
+             <TouchableOpacity style={{
+                 flexDirection:'row',
+                 alignItems:'center',
+                 backgroundColor:'green',
+                 width:50,
+                 height:50,
+                 borderRadius:50/2,
+                 justifyContent:'center',
+                 paddingVertical:5,
+             }}>
+                
+                 <Icon 
+          name={'phone'} 
+          type={'Ant-design'}
+          color={'#FFFFFF'}
+          size={25}
+          
+          />
+             </TouchableOpacity>
+             <TouchableOpacity style={{
+                 flexDirection:'row',
+                 alignItems:'center',
+                 backgroundColor:'#0000FF',
+                 width:50,
+                 height:50,
+                 borderRadius:50/2,
+                 justifyContent:'center',
+                 paddingVertical:5,
+             }}>
+                
+                 <Icon 
+          name={'message'} 
+          type={'material-icons'}
+          color={'#FFFFFF'}
+          size={25}
+          
+          />
+             </TouchableOpacity>
+             </View>
             </View>
+           
+
 
             
+             
 
 
-             </View>
-          </View></TouchableOpacity>
-        }}
-        keyExtractor={item => item.id}
-      />
-     
-     </SafeAreaView>
+
+
+
+           
+
+
+
+
+
+         
+           </View>
+    </SafeAreaView>
   )
 }
+
 const styles = StyleSheet.create({
     heading: {
       fontSize: 18,
@@ -247,9 +365,10 @@ const styles = StyleSheet.create({
       shadowRadius: 3,
     },
     image: {
-      width: 50,
-      height: 50,
-      borderRadius: 50/2
+      width: 100,
+      height: 100,
+      borderRadius: 100/2,
+      alignSelf:'center',
     },
     txt1:{
       fontSize:15,
