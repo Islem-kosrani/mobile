@@ -9,7 +9,7 @@ export default function DetailsPublicationScreen({ navigation }) {
         paddingTop:40,
     }}>
         <View style={{
-            backgroundColor:'#0000FF',
+            backgroundColor:'#623262',
             paddingVertical:10,
             justifyContent:'center',
             alignItems:'center',
@@ -87,16 +87,16 @@ export default function DetailsPublicationScreen({ navigation }) {
                 alignItems:'center',
               }}>
               <Icon 
-          name={'circle-thin'} 
+          name={'map-marker'} 
           type={'font-awesome'}
-          color={'#0000FF'}
+          color={'#800080'}
           size={15}
           
           />
           <View style={{
             marginStart:10,
           }}>
-            <Text style={styles.txt2}>Lyon,France</Text>
+            <Text style={styles.txt2}>Tunis</Text>
             <Text style={styles.txt2}>31/12/9999</Text>
           </View>
           <View>
@@ -114,15 +114,15 @@ export default function DetailsPublicationScreen({ navigation }) {
 <Icon 
           name={'arrowdown'} 
           type={'ant-design'}
-          color={'#0000FF'}
+          color={'#800080'}
           size={20}
           
           />
             <Icon 
-          name={'flight'} 
+          name={'time-to-leave'} 
           type={'material-icons'}
-          color={'#0000FF'}
-          size={20}
+          color={'#800080'}
+          size={30}
           
           />
 </View>
@@ -134,14 +134,14 @@ export default function DetailsPublicationScreen({ navigation }) {
               <Icon 
           name={'map-marker'} 
           type={'font-awesome'}
-          color={'#0000FF'}
+          color={'#800080'}
           size={15}
           
           />
           <View style={{
             marginStart:10,
           }}>
-            <Text style={styles.txt2}>Dakar,Sénégal</Text>
+            <Text style={styles.txt2}>Sousse</Text>
             <Text style={styles.txt2}>31/12/9999</Text>
           </View>
           <View>
@@ -234,42 +234,42 @@ export default function DetailsPublicationScreen({ navigation }) {
 <Icon 
           name={'star-border'} 
           type={'material-icons'}
-          color={'#008000'}
+          color={'#BD63D6'}
           size={15}
           
           />
           <Icon 
           name={'star-border'} 
           type={'material-icons'}
-          color={'#008000'}
+          color={'#BD63D6'}
           size={15}
           
           />
           <Icon 
           name={'star-border'} 
           type={'material-icons'}
-          color={'#008000'}
+          color={'#BD63D6'}
           size={15}
           
           />
           <Icon 
           name={'star-border'} 
           type={'material-icons'}
-          color={'#008000'}
+          color={'#BD63D6'}
           size={15}
           
           />
           <Icon 
           name={'star-border'} 
           type={'material-icons'}
-          color={'#008000'}
+          color={'#BD63D6'}
           size={15}
           
           />
           <Icon 
           name={'star-border'} 
           type={'material-icons'}
-          color={'#008000'}
+          color={'#BD63D6'}
           size={15}
           
           />
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
     txt1:{
       fontSize:15,
       fontWeight:'bold',
-      color:"#0000FF"
+      color:"#800080"
     },
     txt2:{
       fontSize:15,
