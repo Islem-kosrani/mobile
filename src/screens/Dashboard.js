@@ -89,7 +89,7 @@ const TabNavigation = (props) => {
             <TouchableWithoutFeedback
               {...props}
               onPress={() => {
-                
+                navigation.navigate('PublierScreen');
               }}>
               <View
                 style={{
