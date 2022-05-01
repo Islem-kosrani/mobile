@@ -21,6 +21,7 @@ import {
 import TabNavigation from './src/screens/Dashboard'
 import DetailsPublicationScreen from './src/screens/DetailsPublicationScreen'
 import PublierScreen from './src/screens/PublierScreen'
+import DetailsColis from './src/screens/DetailsColis'
 
 const Stack = createStackNavigator()
 
@@ -39,8 +40,10 @@ export default function App() {
             headerShown: false,
           }}
         >
-                  <Stack.Screen name="PublierScreen" component={PublierScreen} />
+       <Stack.Screen name="DetailsColis" component={DetailsColis} />
 
+                  <Stack.Screen name="PublierScreen" component={PublierScreen} />
+                  
           <Stack.Screen name="StartScreen" component={StartScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />

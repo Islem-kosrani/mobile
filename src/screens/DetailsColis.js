@@ -53,7 +53,7 @@ const ModalPoup = ({visible, children}) => {
   );
 };
 
-const SurveillerScreen = ({ navigation }) => {
+const DetailsColis = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const [visibleConfirm, setVisibleConfirm] = React.useState(false);
     // To set the default Star Selected
@@ -104,39 +104,10 @@ const starImageCorner =
        <BackButton goBack={navigation.goBack} />
       <Logo />
       <Header>Surveiller Votre Colis..</Header>
-      <View style={{
-        width:'100%'
-      }}>
-      <CustumInput editable={true} placeholder={"Code"} title={'Code'}/>
-      <TouchableOpacity style={{
-        backgroundColor:'blue',
-        padding:10,
-        borderRadius:10,
-
-      }} onPress={() => navigation.navigate('DetailsColis')}>
-        <Text style={{
-          fontWeight:'bold',
-          fontSize:16,
-          color:'white',
-          textAlign:'center',
-          marginHorizontal:40,
-        }}>Commencer</Text>
-      </TouchableOpacity>
-
-      </View>
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{flex: 1, }}>
     
-      <ModalPoup visible={visible}>
-        <View style={{alignItems: 'center'}}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={() => setVisible(false)}>
-              <Image
-                source={require('../assets/X.png')}
-                style={{height: 30, width: 30}}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
+    
+      
         <View style={{alignItems: 'center'}}>
         
         </View>
@@ -165,6 +136,7 @@ Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
         <View style={styles.container}>
           <Text style={styles.title}>Numéro de téléphone :</Text><Text>56565656</Text>
         </View>
+        <View style={{height:20}}></View>
         <View style={styles.container}>
           <TouchableOpacity onPress={() => setVisibleConfirm(true)} style={{
             backgroundColor:'black',
@@ -193,9 +165,7 @@ Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
             }}>QUITTER</Text>
           </TouchableOpacity>
         </View>
-        
-      
-      </ModalPoup>
+       
       <ModalPoup visible={visibleConfirm}>
         <View style={{alignItems: 'center'}}>
           <View style={styles.header}>
@@ -287,4 +257,4 @@ const styles = StyleSheet.create({
   }
 
 });
-export default SurveillerScreen;
+export default DetailsColis;
