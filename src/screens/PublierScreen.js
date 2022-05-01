@@ -1,17 +1,57 @@
 import React,{useState} from 'react'
-import { Text, View,SafeAreaView, TouchableOpacity, ScrollView, DatePickerIOS } from 'react-native'
+import {  Modal,Text, View,SafeAreaView, TouchableOpacity, ScrollView,Image,  Animated,StyleSheet } from 'react-native'
 import { Icon } from 'react-native-elements';
 import CustumInput from '../components/CustumInput';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DatePicker from 'react-native-datepicker';
+import { theme } from '../core/theme';
+
+
+const ModalPoup = ({visible, children}) => {
+  const [showModal, setShowModal] = React.useState(visible);
+  const scaleValue = React.useRef(new Animated.Value(0)).current;
+  React.useEffect(() => {
+    toggleModal();
+  }, [visible]);
+  const toggleModal = () => {
+    if (visible) {
+      setShowModal(true);
+      Animated.spring(scaleValue, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      setTimeout(() => setShowModal(false), 200);
+      Animated.timing(scaleValue, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
+  return (
+    
+    <Modal transparent visible={showModal}>
+      <View style={styles.modalBackGround}>
+        <Animated.View
+          style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+          {children}
+        </Animated.View>
+      </View>
+    </Modal>
+  );
+};
+
 
 
 export default function PublierScreen({ navigation }) {
   const [date, setDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
-
   const [open, setOpen] = useState(false)
+  const [visible, setVisible] = React.useState(false);
 
+  
 
   return (
     <SafeAreaView style={{
@@ -131,8 +171,25 @@ export default function PublierScreen({ navigation }) {
 
           <CustumInput editable={true} placeholder={"Poids(kg)"} title={'Poids(kg)'}/>
           <CustumInput editable={true} placeholder={"Prix/kg"} title={'Prix/kg'}/>
+          <ModalPoup visible={visible}>
+        <View style={{alignItems: 'center'}}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Image
+                source={require('../assets/X.png')}
+                style={{height: 30, width: 30}}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={{alignItems: 'center'}}>
+        
+        </View>
 
-          <TouchableOpacity style={{
+        <Text style={{marginVertical: 30, fontSize: 20, textAlign: 'center'}}>
+        Félicitations l'ajout a réussi        </Text>
+      </ModalPoup>
+          <TouchableOpacity onPress={() => setVisible(true)} style={{
             alignItems:'center',
             backgroundColor:'blue',
             padding:15,
@@ -151,3 +208,35 @@ export default function PublierScreen({ navigation }) {
   )
 }
 
+const styles = StyleSheet.create({
+
+  row: {
+    flexDirection: 'row',
+    marginTop: 30,
+  },
+  link: {
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '80%',
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    borderRadius: 20,
+    elevation: 20,
+  },
+  header: {
+    width: '100%',
+    height: 40,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+
+});

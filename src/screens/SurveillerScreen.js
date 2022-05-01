@@ -14,6 +14,7 @@ import BackButton from '../components/BackButton'
 import { theme } from '../core/theme';
 import Logo from '../components/Logo'
 import Header from '../components/Header'
+import CustumInput from '../components/CustumInput';
 
 
 const ModalPoup = ({visible, children}) => {
@@ -54,12 +55,77 @@ const ModalPoup = ({visible, children}) => {
 
 const SurveillerScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
+  const [visibleConfirm, setVisibleConfirm] = React.useState(false);
+    // To set the default Star Selected
+    const [defaultRating, setDefaultRating] = React.useState(2);
+    // To set the max number of Stars
+    const [maxRating, setMaxRating] = React.useState([1, 2, 3, 4, 5]);
+      // Filled Star. You can also give the path from local
+  const starImageFilled =
+  'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png';
+// Empty Star. You can also give the path from local
+const starImageCorner =
+  'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_corner.png';
+
+    const CustomRatingBar = () => {
+      return (
+        <View style={{
+          justifyContent: 'center',
+          flexDirection: 'row',
+          marginTop: 30,
+        }}>
+          {maxRating.map((item, key) => {
+            return (
+              <TouchableOpacity
+                activeOpacity={0.7}
+                key={item}
+                onPress={() => setDefaultRating(item)}>
+                <Image
+                  style={{  width: 40,
+                    height: 40,
+                    resizeMode: 'cover',}}
+                  source={
+                    item <= defaultRating
+                      ? { uri: starImageFilled }
+                      : { uri: starImageCorner }
+                  }
+                />
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      );
+    };
+
+    
+
   return (
     <Background>
        <BackButton goBack={navigation.goBack} />
       <Logo />
       <Header>Surveiller Votre Colis..</Header>
+      <View style={{
+        width:'100%'
+      }}>
+      <CustumInput editable={true} placeholder={"Code"} title={'Code'}/>
+      <TouchableOpacity style={{
+        backgroundColor:'blue',
+        padding:10,
+        borderRadius:10,
+
+      }} onPress={() => setVisible(true)}>
+        <Text style={{
+          fontWeight:'bold',
+          fontSize:16,
+          color:'white',
+          textAlign:'center',
+          marginHorizontal:40,
+        }}>Commencer</Text>
+      </TouchableOpacity>
+
+      </View>
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    
       <ModalPoup visible={visible}>
         <View style={{alignItems: 'center'}}>
           <View style={styles.header}>
@@ -74,16 +140,106 @@ const SurveillerScreen = ({ navigation }) => {
         <View style={{alignItems: 'center'}}>
         
         </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Date :</Text><Text>15/02/2020</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Départ  :</Text><Text>sousse,Tunisie</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Arrivée :</Text><Text>mahdia,Tunisie</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Poids(kg) :</Text><Text>1.5</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>
+Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Numéro de téléphone :</Text><Text>56565656</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Nom et Prénom de receveur :</Text><Text>khaoula</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Numéro de téléphone :</Text><Text>56565656</Text>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity onPress={() => setVisibleConfirm(true)} style={{
+            backgroundColor:'black',
+            padding:10,
+            borderRadius:10,
+            width:'50%'
 
-        <Text style={{marginVertical: 30, fontSize: 20, textAlign: 'center'}}>
-          Congratulations registration was successful
-        </Text>
-      </ModalPoup>
-      <Button title="Commencer"
-       mode="contained"
+          }}>
+            <Text style={{
+              color:'white',
+              fontWeight:'bold',
+              textAlign:'center',
+            }}>BIEN RECU</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setVisible(false)} style={{
+            backgroundColor:'black',
+            padding:10,
+            borderRadius:10,
+            width:'50%'
+
+          }}>
+            <Text style={{
+              color:'white',
+              fontWeight:'bold',
+              textAlign:'center',
+            }}>QUITTER</Text>
+          </TouchableOpacity>
+        </View>
+        
       
-       style={{ marginTop: 20,marginVertical:10 }}
-       onPress={() => setVisible(true)} ></Button>
+      </ModalPoup>
+      <ModalPoup visible={visibleConfirm}>
+        <View style={{alignItems: 'center'}}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => setVisibleConfirm(false)}>
+              <Image
+                source={require('../assets/X.png')}
+                style={{height: 30, width: 30}}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={{alignItems: 'center'}}>
+        
+        </View>
+        <Text style={{
+          textAlign:'center',
+          fontWeight:'bold',
+          fontSize:16,
+          
+        }}>Mission accomplie</Text>
+         <Text style={{
+          textAlign:'center',
+          fontWeight:'300',
+          fontSize:16,
+          marginTop:5
+          
+        }}>Merci d'avoir utilisé note service</Text>
+         <Text style={{
+          textAlign:'center',
+          fontWeight:'300',
+          fontSize:16,
+          marginTop:5
+        }}>Nous espérons que tout s'est bien passé</Text>
+          <Text style={{
+          textAlign:'center',
+          fontWeight:'bold',
+          fontSize:16,
+          marginTop:5
+        }}>Evaluez cette expérience :</Text>
+                <CustomRatingBar />
+
+      
+      </ModalPoup>
+    
     </View>
     </Background>
   );
@@ -119,6 +275,16 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
+  container:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingVertical:2
+  },
+  title:{
+    fontWeight:'bold',
+    fontSize:16,
+    color:'blue',
+  }
 
 });
 export default SurveillerScreen;
