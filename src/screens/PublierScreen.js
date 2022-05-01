@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import {  Modal,Text, View,SafeAreaView, TouchableOpacity, ScrollView,Image,  Animated,StyleSheet } from 'react-native'
 import { Icon } from 'react-native-elements';
 import CustumInput from '../components/CustumInput';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import DatePicker from 'react-native-datepicker';
 import { theme } from '../core/theme';
 
