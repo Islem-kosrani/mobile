@@ -11,7 +11,7 @@ import {
   TouchableOpacity
 } from 'react-native';
  
-const CustumInput = ({value,placeholder,onChangeText,title,editable,onPress}) => {
+const CustumInput = ({value,placeholder,onChangeText,title,editable,onPress,inputType}) => {
   const [userName, setUserName] = useState('');
   return (
     <SafeAreaView >
@@ -26,7 +26,7 @@ const CustumInput = ({value,placeholder,onChangeText,title,editable,onPress}) =>
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
-         
+          keyboardType={inputType}
         />
         </TouchableOpacity>
       

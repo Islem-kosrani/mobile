@@ -38,10 +38,38 @@ export default function AccueilScreen({ navigation }) {
             return <TouchableOpacity onPress={()=>{
               navigation.navigate('DetailsPublicationScreen')
             }}><View style={[styles.card, styles.shadowProp]}>
+               <TouchableOpacity
+               onPress={()=>{
+                 navigation.navigate("ReservationScreen")
+               }}
+               style={{
+                 flexDirection:'row',
+                 alignItems:'center',
+                 backgroundColor:'green',
+                 width:'100%',
+                 borderRadius:10,
+                 justifyContent:'center',
+                 paddingVertical:10,
+                 marginVertical:5,
+             }}>
+                 <Text style={{
+                     color:'white',
+                     paddingHorizontal:10,
+
+                 }}>Réserver</Text>
+                 <Icon 
+          name={'shopping-cart'} 
+          type={'feather'}
+          color={'#FFFFFF'}
+          size={15}
+          
+          />
+             </TouchableOpacity>
             <View style={{
               flexDirection:'row',
               justifyContent:'space-between'
             }}>
+
              <Text>Départ dans :</Text><Text>22-04-2022 15:00:00</Text>
             </View>
             <View style={{
