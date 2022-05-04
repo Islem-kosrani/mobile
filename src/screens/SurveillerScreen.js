@@ -107,11 +107,15 @@ const starImageCorner =
       <View style={{
         width:'100%'
       }}>
-      <CustumInput editable={true} placeholder={"Code"} title={'Code'}/>
+      <CustumInput editable={true} placeholder={"Code"} title={'Code'}
+  
+      />
       <TouchableOpacity style={{
-        backgroundColor:'blue',
+        backgroundColor:'#5E17EB',
         padding:10,
         borderRadius:10,
+    
+
 
       }} onPress={() => navigation.navigate('DetailsColis')}>
         <Text style={{
@@ -180,7 +184,7 @@ Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
             }}>BIEN RECU</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setVisible(false)} style={{
-            backgroundColor:'black',
+            backgroundColor:'green',
             padding:10,
             borderRadius:10,
             width:'50%'
@@ -222,7 +226,7 @@ Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
           fontSize:16,
           marginTop:5
           
-        }}>Merci d'avoir utilisé note service</Text>
+        }}>Merci d'avoir utilisé notre service</Text>
          <Text style={{
           textAlign:'center',
           fontWeight:'300',

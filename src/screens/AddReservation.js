@@ -50,13 +50,13 @@ export default function AddReservation({ navigation }) {
           }}>
           <CustumInput editable={true} placeholder={"Nom"} title={'Nom'}/>
           <CustumInput editable={true} placeholder={"Prénom"} title={'Prénom'}/>
-          <CustumInput inputType={'numeric'} editable={true} placeholder={"Code postale"} title={'Code postale'}/>
-          <CustumInput editable={true} placeholder={"Téléphone"} title={'Téléphone'}/>
+          <CustumInput  editable={true} placeholder={"Adresse"} title={'Adresse'}/>
+          <CustumInput  inputType={'numeric'} editable={true} placeholder={"Téléphone"} title={'Téléphone'}/>
           <CustumInput inputType={'email-address'} editable={true} placeholder={"Email"} title={'Email'}/>
           <TouchableOpacity onPress={() => {
               navigation.goBack()
           }} style={{
-            backgroundColor:'black',
+            backgroundColor:'#623262',
             padding:10,
             borderRadius:5,
             marginHorizontal:10,

@@ -17,7 +17,7 @@ const CustumInput = ({value,placeholder,onChangeText,title,editable,onPress,inpu
     <SafeAreaView >
       <View style={styles.container}>
         <Text style={{
-            color:'green',
+            color:'#1935F1',
             fontWeight:'bold',
         }}>{title}</Text>
         <TouchableOpacity onPress={onPress}  style={styles.input}>

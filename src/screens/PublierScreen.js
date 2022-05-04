@@ -92,14 +92,14 @@ export default function PublierScreen({ navigation }) {
           <CustumInput editable={true} placeholder={"Départ"} title={'D\'où partez-vous ?'}/>
           <CustumInput editable={true} placeholder={"Arrivée"} title={'Où partez-vous ?'}/>
  <Text style={{
-            color:'green',
+            color:'#273386',
             fontWeight:'bold',
             marginHorizontal:20,
             paddingTop:10,
         }}>Daté départ</Text>
           <DatePicker
           style={{
-            width: '100%',
+            width: '90%',
             marginTop: 20,
             marginHorizontal:20,
           }}
@@ -130,14 +130,14 @@ export default function PublierScreen({ navigation }) {
           }}
         />
           <Text style={{
-            color:'green',
+            color:'#273386',
             fontWeight:'bold',
             marginHorizontal:20,
             paddingTop:10,
         }}>Daté arrivée</Text>
           <DatePicker
           style={{
-            width: '100%',
+            width: '90%',
             marginTop: 20,
             marginHorizontal:20,
           }}
@@ -190,7 +190,7 @@ export default function PublierScreen({ navigation }) {
       </ModalPoup>
           <TouchableOpacity onPress={() => setVisible(true)} style={{
             alignItems:'center',
-            backgroundColor:'blue',
+            backgroundColor:'#623262',
             padding:15,
             marginHorizontal:20,
             borderRadius:15,

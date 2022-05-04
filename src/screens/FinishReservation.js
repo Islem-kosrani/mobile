@@ -342,18 +342,19 @@ resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect o
             fontWeight:'bold',
             fontSize:20,
             marginBottom:10,
+            color:'#555557',
 
-        }}>Liste des articles</Text>
+        }}>Détails Colis</Text>
 
         <View>
-            <Text style={{fontSize:16}}>Test</Text>
+            <Text style={{fontSize:16}}></Text>
             <View style={{
                 flexDirection:'row',
             }}><Text style={{
                 fontWeight:'bold',
                 fontSize:20,
-                color:'#000000'
-            }}>Quantité : </Text>
+                color:'#555557'
+            }}>Poids(Kg) : </Text>
             <Text style={{
                 fontSize:20,
                 marginStart:10,

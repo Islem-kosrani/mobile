@@ -32,12 +32,7 @@ export default function StartScreen({ navigation }) {
       >
        Surveiller
       </Button>
-      <Button
-        mode="outlined"
-        onPress={() => navigation.navigate('ProfileScreen')}
-      >
-    Profile
-      </Button>
+  
     </Background>
   )
 }

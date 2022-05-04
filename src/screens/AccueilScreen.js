@@ -8,30 +8,24 @@ export default function AccueilScreen({ navigation }) {
     const [data,setData] = React.useState([{id:1},{id:2},{id:3},{id:4},{id:5}])
   return (
     <SafeAreaView style={{
-        paddingTop:40,
-    }}>
-      <View style={{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        padding:25,
-      }}>
-        <Text>Annonces:12</Text>
+      paddingTop:40,
+  }}>
+        <View style={{
+            backgroundColor:'#623262',
+            paddingVertical:10,
+            justifyContent:'center',
+            alignItems:'center',
+        }}>
+            <Text style={{
+                color:'white',
+                fontSize:15,
+               textAlignVertical:'center',
+            }}>Chrono Liv</Text>
+             
+        </View>
+       
+    
 
-<View style={{
-  flexDirection:'row'
-}}>
-<Text>Tri par : ...</Text>
-<Icon 
-          name={'arrow-drop-down'} 
-          type={'material-icons'}
-          color={'#563499'}
-          size={15}
-          
-          />
-
-</View>
-
-      </View>
          <FlatList
         data={data}
         renderItem={(item)=>{

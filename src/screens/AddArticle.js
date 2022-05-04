@@ -48,9 +48,18 @@ export default function AddArticle({ navigation }) {
               
 
           }}>
-          <CustumInput editable={true} placeholder={"Libellé"} title={'Libellé'}/>
-          <CustumInput editable={true} inputType={'numeric'} placeholder={"Quantité"} title={'Quantité'}/>
-          <CustumInput  editable={true} inputType={'numeric'} placeholder={"Longueur"} title={'Longueur'}/>
+
+          <CustumInput editable={true} placeholder={"Poids"} title={'Poids(Kg)'}
+         inputType={'numeric'}
+          
+          />
+
+
+         
+          <CustumInput  editable={true} inputType={'numeric'} placeholder={"Longueur"} title={'Longueur'}
+          
+          
+          />
 
           <CustumInput  editable={true} inputType={'numeric'} placeholder={"Largeur"} title={'Largeur'}/>
 
@@ -59,7 +68,7 @@ export default function AddArticle({ navigation }) {
           <TouchableOpacity onPress={() => {
               navigation.goBack()
           }} style={{
-            backgroundColor:'black',
+            backgroundColor:'#623262',
             padding:10,
             borderRadius:5,
             marginHorizontal:10,

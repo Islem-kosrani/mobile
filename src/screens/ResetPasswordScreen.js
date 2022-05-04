@@ -6,8 +6,23 @@ import Header from '../components/Header'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import { emailValidator } from '../helpers/emailValidator'
+import { Alert} from 'react-native'
 
 export default function ResetPasswordScreen({ navigation }) {
+
+
+
+  function showAlert(){
+
+    Alert.alert("Un nouveau mot passe sera envoye à votre email!","Merci de Verifier Votre compte ",
+  [ 
+    {
+      Text:"",onPress:() =>console.log("")}  ,
+  
+  ]
+  
+    )
+   }
   const [email, setEmail] = useState({ value: '', error: '' })
 
   const sendResetPasswordEmail = () => {
@@ -40,7 +55,7 @@ export default function ResetPasswordScreen({ navigation }) {
       />
       <Button
         mode="contained"
-        onPress={sendResetPasswordEmail}
+        onPress={showAlert}
         style={{ marginTop: 16 }}
       >
         Envoyer

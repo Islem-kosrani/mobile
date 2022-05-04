@@ -50,7 +50,7 @@ export default function ReservationScreen({ navigation }) {
           <Text style={{
             fontWeight:'bold',
             fontSize:20,
-            color:'#000000'
+            color:'#555557'
           }}>Sélectionnez ou ajoutez {"\n"}un destinataire</Text>
           <TouchableOpacity onPress={()=>{
             navigation.navigate('AddReservation')
@@ -58,7 +58,7 @@ export default function ReservationScreen({ navigation }) {
           <Icon 
           name={'person-add'} 
           type={'ionicons'}
-          color={'#000000'}
+          color={'#555557'}
           size={30}
           
           />
@@ -81,7 +81,7 @@ export default function ReservationScreen({ navigation }) {
           <Icon 
           name={'telephone'} 
           type={'foundation'}
-          color={'#000000'}
+          color={'#555557'}
           size={25}
           
           />
@@ -138,7 +138,7 @@ export default function ReservationScreen({ navigation }) {
         <TouchableOpacity onPress={() => {
               navigation.navigate("FinishReservation")
           }} style={{
-            backgroundColor:'black',
+            backgroundColor:'#623262',
             padding:10,
             borderRadius:5,
             marginHorizontal:10,
