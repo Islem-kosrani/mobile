@@ -11,7 +11,7 @@ import {
   TouchableOpacity
 } from 'react-native';
  
-const CustumInput = ({value,placeholder,onChangeText,title,editable,onPress,inputType}) => {
+const CustumInput = ({onCancel,value,placeholder,onChangeText,title,editable,onPress,inputType,from}) => {
   const [userName, setUserName] = useState('');
   return (
     <SafeAreaView >
@@ -22,12 +22,27 @@ const CustumInput = ({value,placeholder,onChangeText,title,editable,onPress,inpu
         }}>{title}</Text>
         <TouchableOpacity onPress={onPress}  style={styles.input}>
         <TextInput
+        maxLength={title=="Téléphone"?8:255}
+        
         editable={editable}
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
           keyboardType={inputType}
         />
+       { from=="Profile"?<TouchableOpacity onPress={onCancel} style={{
+          position:'absolute',
+          right:10,
+          top:10
+        }}>
+        <Icon 
+          name={'closecircle'} 
+          type={'ant-design'}
+          color={'#000000'}
+          size={25}
+          
+          />
+        </TouchableOpacity>:null}
         </TouchableOpacity>
       
            

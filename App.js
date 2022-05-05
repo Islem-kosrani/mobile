@@ -39,7 +39,7 @@ export default function App() {
 
       
         <Stack.Navigator
-          initialRouteName="Main"
+          initialRouteName="StartScreen"
           screenOptions={{
             headerShown: false,
           }}
