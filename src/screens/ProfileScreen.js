@@ -115,7 +115,7 @@ const ProfileScreen =(({ navigation }) =>{
         <ScrollView>
 
     <View style={{
-      backgroundColor:'blue',
+      backgroundColor:'#D9D9D9',
       height:200,
     }}>
       <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
@@ -123,10 +123,10 @@ const ProfileScreen =(({ navigation }) =>{
        <Image
           source={{
             uri:
-              'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLvdLq5DN6TMnCLHtc9E9DyJQyaRJpPfFFdJ75JF0eOcL9iQzX2ErYeqz1cdV8ABkUtXY&usqp=CAU',
           }}
           //borderRadius style will help us make the Round Shape Image
-          style={{ width: 75, height: 75, borderRadius: 75 / 2,alignSelf:'center',
+          style={{ width: 95, height: 95, borderRadius: 35 / 2,alignSelf:'center',
         marginTop:40, }}
         />
         
@@ -137,23 +137,23 @@ const ProfileScreen =(({ navigation }) =>{
 
       >
   <Icon 
-          name={'logout'} 
-          type={'ant-design'}
-          color={'#FFFFFF'}
-          size={25}
+          name={'power'} 
+          type={'feather'}
+          color={'#623262'}
+          size={30}
           
           />
       </TouchableOpacity>
       <Text style={{
         textAlign:'center',
         marginTop:20,
-        color:'white',
+        color:'#623262',
         fontSize:20,
       }}>Islem Test</Text>
            <Text style={{
         textAlign:'center',
        
-        color:'white',
+        color:'#623262',
         fontSize:16,
         fontWeight:'bold'
       }}>Islem@test.com</Text>
@@ -183,7 +183,7 @@ const ProfileScreen =(({ navigation }) =>{
 setVisible(true)
     }}  editable={false} placeholder={sexe} title={'Sexe'}/>
       <TouchableOpacity onPress={() => {}} style={{
-            backgroundColor:'black',
+            backgroundColor:'#623262',
             padding:10,
             borderRadius:10,
             width:'90%',
@@ -198,7 +198,7 @@ setVisible(true)
             }}>Sauvegarder</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('ChangermotpasseScreen')} style={{
-            backgroundColor:'black',
+            backgroundColor:'#623262',
             padding:10,
             borderRadius:10,
             width:'90%',
@@ -361,7 +361,7 @@ justifyContent:'center',
   panelButton: {
     padding: 13,
     borderRadius: 10,
-    backgroundColor: '#5E17EB',
+    backgroundColor: '#623262',
     alignItems: 'center',
     marginVertical: 7,
   },

@@ -125,7 +125,7 @@ const starImageCorner =
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>
-Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
+Nom et Prénom  d'expéditeur :</Text><Text>islem kosrani</Text>
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>Numéro de téléphone :</Text><Text>56565656</Text>
@@ -139,10 +139,10 @@ Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
         <View style={{height:20}}></View>
         <View style={styles.container}>
           <TouchableOpacity onPress={() => setVisibleConfirm(true)} style={{
-            backgroundColor:'black',
+            backgroundColor:'#5E17EB',
             padding:10,
             borderRadius:10,
-            width:'50%'
+            width:'48%'
 
           }}>
             <Text style={{
@@ -152,10 +152,10 @@ Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
             }}>BIEN RECU</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setVisible(false)} style={{
-            backgroundColor:'black',
+            backgroundColor:'#5E17EB',
             padding:10,
             borderRadius:10,
-            width:'50%'
+            width:'48%'
 
           }}>
             <Text style={{
@@ -205,9 +205,10 @@ Nom et Prénom {'\n'} d'expéditeur :</Text><Text>islem kasraoui</Text>
           fontSize:16,
           marginTop:5
         }}>Evaluez cette expérience :</Text>
+
+
                 <CustomRatingBar />
 
-      
       </ModalPoup>
     
     </View>

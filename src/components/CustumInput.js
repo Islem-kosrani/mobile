@@ -38,7 +38,7 @@ const CustumInput = ({onCancel,value,placeholder,onChangeText,title,editable,onP
         <Icon 
           name={'closecircle'} 
           type={'ant-design'}
-          color={'#000000'}
+          color={'#623262'}
           size={25}
           
           />

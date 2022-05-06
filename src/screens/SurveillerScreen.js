@@ -114,7 +114,7 @@ const starImageCorner =
         backgroundColor:'#5E17EB',
         padding:10,
         borderRadius:10,
-    
+           
 
 
       }} onPress={() => navigation.navigate('DetailsColis')}>

@@ -48,7 +48,7 @@ export default function DetailsPublicationScreen({ navigation }) {
              <TouchableOpacity style={{
                  flexDirection:'row',
                  alignItems:'center',
-                 backgroundColor:'green',
+                 backgroundColor:'red',
                  width:'100%',
                  borderRadius:10,
                  justifyContent:'center',
@@ -58,10 +58,10 @@ export default function DetailsPublicationScreen({ navigation }) {
                      color:'white',
                      paddingHorizontal:10,
 
-                 }}>Réserver</Text>
+                 }}>Supprimer l'annonce</Text>
                  <Icon 
-          name={'shopping-cart'} 
-          type={'feather'}
+          name={'delete'} 
+          type={'MaterialCommunityIcons'}
           color={'#FFFFFF'}
           size={15}
           
@@ -192,16 +192,7 @@ export default function DetailsPublicationScreen({ navigation }) {
             }}>
 
                 
-            <View>
-            <Text style={styles.txt1}>15.00TND</Text>
-            <Text style={styles.txt2}>Prix/Enveloppe</Text>
-            </View>
-            <View style={{
-                alignItems:'flex-end'
-            }}>
-            <Text style={styles.txt1}>15.00TND</Text>
-            <Text style={styles.txt2}>Prix/Téléphone</Text>
-            </View>
+          
          
 
             
@@ -211,117 +202,7 @@ export default function DetailsPublicationScreen({ navigation }) {
             </View>
            
           </View>
-          <View style={[styles.card, styles.shadowProp]}>
-              
-            <View style={{
-              flexDirection:'column',
-              justifyContent:'space-between'
-            }}>
-                <Image
-  style={styles.image}
-  source={{uri:"https://media.istockphoto.com/photos/closeup-portrait-of-her-she-nice-attractive-puzzled-ignorant-girl-picture-id1132758418?k=20&m=1132758418&s=612x612&w=0&h=ca6WVDDblf3um3mdfCSGVpLGfwuyjj5UTLD9rMMHfH4="}}
-  resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect on Android
-/>
-<Text style={{
-    textAlign:'center',
-    paddingVertical:10
-}}>Ben mamadou lien</Text>
-<View style={{
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center'
-}}>
-<Icon 
-          name={'star-border'} 
-          type={'material-icons'}
-          color={'#BD63D6'}
-          size={15}
-          
-          />
-          <Icon 
-          name={'star-border'} 
-          type={'material-icons'}
-          color={'#BD63D6'}
-          size={15}
-          
-          />
-          <Icon 
-          name={'star-border'} 
-          type={'material-icons'}
-          color={'#BD63D6'}
-          size={15}
-          
-          />
-          <Icon 
-          name={'star-border'} 
-          type={'material-icons'}
-          color={'#BD63D6'}
-          size={15}
-          
-          />
-          <Icon 
-          name={'star-border'} 
-          type={'material-icons'}
-          color={'#BD63D6'}
-          size={15}
-          
-          />
-          <Icon 
-          name={'star-border'} 
-          type={'material-icons'}
-          color={'#BD63D6'}
-          size={15}
-          
-          />
-</View>
-             <View style={{
-                 flexDirection:'row',
-                 justifyContent:'space-between',
-                 
-
-             }}>
-             <TouchableOpacity style={{
-                 flexDirection:'row',
-                 alignItems:'center',
-                 backgroundColor:'green',
-                 width:50,
-                 height:50,
-                 borderRadius:50/2,
-                 justifyContent:'center',
-                 paddingVertical:5,
-             }}>
-                
-                 <Icon 
-          name={'phone'} 
-          type={'Ant-design'}
-          color={'#FFFFFF'}
-          size={25}
-          
-          />
-             </TouchableOpacity>
-             <TouchableOpacity style={{
-                 flexDirection:'row',
-                 alignItems:'center',
-                 backgroundColor:'#0000FF',
-                 width:50,
-                 height:50,
-                 borderRadius:50/2,
-                 justifyContent:'center',
-                 paddingVertical:5,
-             }}>
-                
-                 <Icon 
-          name={'message'} 
-          type={'material-icons'}
-          color={'#FFFFFF'}
-          size={25}
-          
-          />
-             </TouchableOpacity>
-             </View>
-            </View>
-           
-
+        
 
             
              
@@ -336,8 +217,7 @@ export default function DetailsPublicationScreen({ navigation }) {
 
 
 
-         
-           </View>
+       
     </SafeAreaView>
   )
 }
