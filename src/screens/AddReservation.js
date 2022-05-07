@@ -54,7 +54,7 @@ export default function AddReservation({ navigation }) {
           <CustumInput  inputType={'numeric'} editable={true} placeholder={"Téléphone"} title={'Téléphone'}/>
           <CustumInput inputType={'email-address'} editable={true} placeholder={"Email"} title={'Email'}/>
           <TouchableOpacity onPress={() => {
-              navigation.goBack()
+               navigation.navigate("FinishReservation")
           }} style={{
             backgroundColor:'#623262',
             padding:10,
@@ -67,7 +67,7 @@ export default function AddReservation({ navigation }) {
               color:'white',
               fontWeight:'bold',
               textAlign:'center',
-            }}>Terminer</Text>
+            }}>Suivante</Text>
           </TouchableOpacity>
           </View>
      

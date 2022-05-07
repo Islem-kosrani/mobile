@@ -29,12 +29,12 @@ export default function AccueilScreen({ navigation }) {
          <FlatList
         data={data}
         renderItem={(item)=>{
-            return <TouchableOpacity onPress={()=>{
-              navigation.navigate('DetailsPublicationScreen')
+            return <View onPress={()=>{
+             
             }}><View style={[styles.card, styles.shadowProp]}>
                <TouchableOpacity
                onPress={()=>{
-                 navigation.navigate("ReservationScreen")
+                 navigation.navigate("AddArticle")
                }}
                style={{
                  flexDirection:'row',
@@ -238,7 +238,7 @@ export default function AccueilScreen({ navigation }) {
 
 
              </View>
-          </View></TouchableOpacity>
+          </View></View>
         }}
         keyExtractor={item => item.id}
       />

@@ -1,9 +1,48 @@
 import React from 'react'
-import { Text, View,SafeAreaView, TouchableOpacity } from 'react-native'
+import { Animated,Modal, Text, View,SafeAreaView, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import Background from '../components/Background'
 import { Icon } from 'react-native-elements';
+import { theme } from '../core/theme';
 
-
+const ModalPoup = ({visible, children}) => {
+  const [showModal, setShowModal] = React.useState(visible);
+  const scaleValue = React.useRef(new Animated.Value(0)).current;
+  React.useEffect(() => {
+    toggleModal();
+  }, [visible]);
+  const toggleModal = () => {
+    if (visible) {
+      setShowModal(true);
+      Animated.spring(scaleValue, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      setTimeout(() => setShowModal(false), 200);
+      Animated.timing(scaleValue, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
+  return (
+    
+    <Modal transparent visible={showModal}>
+      <View style={styles.modalBackGround}>
+        <Animated.View
+          style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+          {children}
+        </Animated.View>
+      </View>
+    </Modal>
+  );
+};
 export default function ReservationScreen({ navigation }) {
+  const [data,setData] = React.useState([{id:1},{id:2},{id:3},{id:4},{id:5}])
+  const [visible, setVisible] = React.useState(false);
+
   return (
     <SafeAreaView style={{
       paddingTop:40,
@@ -19,139 +58,184 @@ export default function ReservationScreen({ navigation }) {
                 fontSize:15,
                textAlignVertical:'center',
             }}>Réservation</Text>
-             <TouchableOpacity onPress={()=>{
-                navigation.goBack()
-             }} style={{
-                 flexDirection:'row',
-                 position:'absolute',
-                 left:0,
-                 borderRadius:10,
-                 justifyContent:'center',
-               
-             }}>
-                 
-                 <Icon 
-          name={'arrow-left'} 
-          type={'Octicons'}
-          color={'#FFFFFF'}
-          size={50}
-          
-          />
-         
-             </TouchableOpacity>
+           
         </View>
-        <View style={{
-          flexDirection:'row',
-          justifyContent:'space-between',
-          marginVertical:10,
-          marginHorizontal:10,
-
-        }}>
-          <Text style={{
-            fontWeight:'bold',
-            fontSize:20,
-            color:'#555557'
-          }}>Sélectionnez ou ajoutez {"\n"}un destinataire</Text>
-          <TouchableOpacity onPress={()=>{
-            navigation.navigate('AddReservation')
-          }}>
-          <Icon 
-          name={'person-add'} 
-          type={'ionicons'}
-          color={'#555557'}
-          size={30}
+        <FlatList
+        data={data}
+        renderItem={(item)=>{
+            return    <TouchableOpacity onPress={() => setVisible(true)}><View style={[styles.card, styles.shadowProp]}>
           
-          />
-          </TouchableOpacity>
           
-        </View>
-        <View style={{
-          marginHorizontal:10,
-        }}>
-          <Text style={{
-            color:'blue',
-            fontSize:14,
 
-          }}>Test Test</Text>
+
+
+            <View style={{
+              flexDirection:'row',
+            
+            }}>
+
+
+
+              <View style={{
+                flexDirection:'row',
+                alignItems:'center',
+                alignSelf:'center',
+              }}>
+            
           <View style={{
-            flexDirection:'row',
-            marginTop:5,
-
+            marginStart:10,
           }}>
-          <Icon 
-          name={'telephone'} 
-          type={'foundation'}
-          color={'#555557'}
-          size={25}
-          
-          />
-            <Text style={{
-              textAlignVertical:'center',
-              paddingStart:10,
-
-            }}>+21655555555</Text>
+            <Text style={styles.txt2}>cjdhbcsdjncjcnbdhcnedjcnhjk</Text>
+            <Text style={styles.txt2}>31/12/9999</Text>
           </View>
-          <View style={{
-            flexDirection:'row',
-            marginTop:5,
+          <View>
 
-          }}>
-          <Icon 
-          name={'email'} 
-          type={'fontisto'}
-          color={'#000000'}
-          size={25}
-          
-          />
-            <Text style={{
-              textAlignVertical:'center',
-              paddingStart:10,
-              
-            }}>test@gmail.com</Text>
+          </View>
+
+
+              </View>
+             
+
+
+
+           
+
+
+
+
+            </View>
+  
+          </View></TouchableOpacity>
+        }}
+        keyExtractor={item => item.id}
+      />
+       <ModalPoup visible={visible}>
+        <View style={{alignItems: 'center'}}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Image
+                source={require('../assets/X.png')}
+                style={{height: 30, width: 30}}
+              />
+            </TouchableOpacity>
           </View>
         </View>
-        <View style={{
-          flexDirection:'row',
-          justifyContent:'space-between',
-          marginVertical:10,
-          marginHorizontal:10,
-
-        }}>
-          <Text style={{
-            fontWeight:'bold',
-            fontSize:20,
-            color:'#000000'
-          }}>Ajouter vos articles</Text>
-          <TouchableOpacity onPress={()=>{
-            navigation.navigate('AddArticle')
-          }}>
-          <Icon 
-          name={'plus'} 
-          type={'ant-design'}
-          color={'#000000'}
-          size={30}
-          
-          />
-          </TouchableOpacity>
-          
+        <View style={{alignItems: 'center'}}>
+        
         </View>
-        <TouchableOpacity onPress={() => {
-              navigation.navigate("FinishReservation")
-          }} style={{
-            backgroundColor:'#623262',
-            padding:10,
-            borderRadius:5,
-            marginHorizontal:10,
-            width:'95%'
+        <Text style={{
+          textAlign:'center',
+          fontWeight:'bold',
+          fontSize:16,
+          
+        }}>Mission</Text>
+       <View style={styles.container}>
+          <Text style={styles.title}>Date :</Text><Text>15/02/2020</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Départ  :</Text><Text>sousse,Tunisie</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Arrivée :</Text><Text>mahdia,Tunisie</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Poids(kg) :</Text><Text>1.5</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>
+Nom et Prénom  d'expéditeur :</Text><Text>islem kosrani</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Numéro de téléphone :</Text><Text>56565656</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Nom et Prénom de receveur :</Text><Text>khaoula</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Numéro de téléphone :</Text><Text>56565656</Text>
+        </View>
 
-          }}>
-            <Text style={{
-              color:'white',
-              fontWeight:'bold',
-              textAlign:'center',
-            }}>Terminer</Text>
-          </TouchableOpacity>
+
+
+      </ModalPoup>
     </SafeAreaView>
   )
 }
+const styles = StyleSheet.create({
+  heading: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 13,
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    marginHorizontal:25,
+    paddingVertical: 25,
+    paddingHorizontal: 20,
+   
+    marginVertical: 10,
+    flexDirection:'column'
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 50/2
+  },
+  txt1:{
+    fontSize:15,
+    fontWeight:'bold',
+    color:"#800080"
+  },
+  txt2:{
+    fontSize:15,
+    fontWeight:'normal',
+    color:"gray"
+  },
+  row: {
+    flexDirection: 'row',
+    marginTop: 30,
+  },
+  link: {
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '80%',
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    borderRadius: 20,
+    elevation: 20,
+  },
+  header: {
+    width: '100%',
+    height: 40,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  container:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingVertical:2
+  },
+  title:{
+    fontWeight:'bold',
+    fontSize:16,
+    color:'blue',
+  }
+
+});
 

@@ -66,7 +66,7 @@ export default function AddArticle({ navigation }) {
           <CustumInput  editable={true} inputType={'numeric'} placeholder={"Hauteur"} title={'Hauteur'}/>
 
           <TouchableOpacity onPress={() => {
-              navigation.goBack()
+               navigation.navigate("AddReservation")
           }} style={{
             backgroundColor:'#623262',
             padding:10,
@@ -79,7 +79,7 @@ export default function AddArticle({ navigation }) {
               color:'white',
               fontWeight:'bold',
               textAlign:'center',
-            }}>Terminer</Text>
+            }}>Suivante</Text>
           </TouchableOpacity>
           </View>
      

@@ -118,7 +118,7 @@ const TabNavigation = (props) => {
         name="ActivityScreen"
         component={ReservationScreen}
         options={{
-          tabBarLabel: 'Réservations',
+          tabBarLabel: 'Missions',
             tabBarColor: "red",
 
           tabBarIcon: ({focused}) =>
