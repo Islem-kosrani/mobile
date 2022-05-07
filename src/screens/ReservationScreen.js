@@ -57,7 +57,7 @@ export default function ReservationScreen({ navigation }) {
                 color:'white',
                 fontSize:15,
                textAlignVertical:'center',
-            }}>Réservation</Text>
+            }}>Missions</Text>
            
         </View>
         <FlatList
@@ -85,8 +85,8 @@ export default function ReservationScreen({ navigation }) {
           <View style={{
             marginStart:10,
           }}>
-            <Text style={styles.txt2}>cjdhbcsdjncjcnbdhcnedjcnhjk</Text>
-            <Text style={styles.txt2}>31/12/9999</Text>
+            <Text style={styles.txt2}>Mission numero1</Text>
+            <Text style={styles.txt2}>31/12/2022</Text>
           </View>
           <View>
 
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     color:"#800080"
   },
   txt2:{
-    fontSize:15,
+    fontSize:17,
     fontWeight:'normal',
     color:"gray"
   },

@@ -22,7 +22,7 @@ export default function AddArticle({ navigation }) {
                   color:'white',
                   fontSize:15,
                  textAlignVertical:'center',
-              }}>Ajout d'un article</Text>
+              }}>Entrer Détails colis </Text>
                <TouchableOpacity onPress={()=>{
                   navigation.goBack()
                }} style={{
@@ -79,7 +79,7 @@ export default function AddArticle({ navigation }) {
               color:'white',
               fontWeight:'bold',
               textAlign:'center',
-            }}>Suivante</Text>
+            }}>Suivant</Text>
           </TouchableOpacity>
           </View>
      

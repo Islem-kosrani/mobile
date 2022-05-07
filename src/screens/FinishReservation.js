@@ -22,7 +22,7 @@ export default function FinishReservation({ navigation }) {
                   color:'white',
                   fontSize:15,
                  textAlignVertical:'center',
-              }}>Réservation</Text>
+              }}>Confirmation</Text>
                <TouchableOpacity onPress={()=>{
                   navigation.goBack()
                }} style={{
@@ -124,26 +124,6 @@ export default function FinishReservation({ navigation }) {
             </View>
   
           </View></TouchableOpacity>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -291,47 +271,6 @@ resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect o
 
          </View>
       </View></TouchableOpacity>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
 
 
       <TouchableOpacity onPress={()=>{

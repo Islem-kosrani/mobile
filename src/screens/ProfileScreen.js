@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity,SafeAreaView,ScrollView ,Image, Modal,} from 'react-native'
+import { View, StyleSheet, TouchableOpacity,SafeAreaView,ScrollView ,ImageBackground,Image, Modal,} from 'react-native'
 import { Icon } from 'react-native-elements';
 import Animated from 'react-native-reanimated';
 
@@ -120,16 +120,33 @@ const ProfileScreen =(({ navigation }) =>{
     }}>
       <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
 
-       <Image
+       <ImageBackground
           source={{
             uri:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLvdLq5DN6TMnCLHtc9E9DyJQyaRJpPfFFdJ75JF0eOcL9iQzX2ErYeqz1cdV8ABkUtXY&usqp=CAU',
           }}
           //borderRadius style will help us make the Round Shape Image
-          style={{ width: 95, height: 95, borderRadius: 35 / 2,alignSelf:'center',
+          style={{ width: 100, height: 100, borderRadius: 45 / 2,alignSelf:'center',
         marginTop:40, }}
-        />
-        
+        ><View style ={{
+          flex:1,
+          justifyContent:'center',
+          alignItems:'center',
+        }}>
+          <Icon name="camera"    type={'feather'} size={35} color="#fff" style={{
+
+            opacity:0.66,
+            alignItems:'center',
+            justifyContent:'center',
+            borderWidth:0.5,
+            borderColor:'#fff',
+            borderRadius:9,
+
+            
+          }}/>
+      
+        </View>
+       </ImageBackground> 
               </TouchableOpacity>
 
       <TouchableOpacity

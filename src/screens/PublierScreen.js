@@ -186,7 +186,7 @@ export default function PublierScreen({ navigation }) {
         </View>
 
         <Text style={{marginVertical: 30, fontSize: 20, textAlign: 'center'}}>
-        Félicitations l'ajout a réussi        </Text>
+        Félicitations votre annonce est ajoutée      </Text>
       </ModalPoup>
           <TouchableOpacity onPress={() => setVisible(true)} style={{
             alignItems:'center',

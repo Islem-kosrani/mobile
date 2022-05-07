@@ -22,7 +22,7 @@ export default function AddReservation({ navigation }) {
                   color:'white',
                   fontSize:15,
                  textAlignVertical:'center',
-              }}>Réservation</Text>
+              }}>Entrer Détails destinataire</Text>
                <TouchableOpacity onPress={()=>{
                   navigation.goBack()
                }} style={{
@@ -67,7 +67,7 @@ export default function AddReservation({ navigation }) {
               color:'white',
               fontWeight:'bold',
               textAlign:'center',
-            }}>Suivante</Text>
+            }}>Suivant</Text>
           </TouchableOpacity>
           </View>
      
