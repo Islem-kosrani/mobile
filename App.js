@@ -26,6 +26,7 @@ import ReservationScreen from './src/screens/ReservationScreen'
 import AddReservation from './src/screens/AddReservation'
 import AddArticle from './src/screens/AddArticle'
 import FinishReservation from './src/screens/FinishReservation'
+import NotificationScreen from './src/screens/NotificationsScreen'
 
 const Stack = createStackNavigator()
 
@@ -44,6 +45,7 @@ export default function App() {
             headerShown: false,
           }}
         >
+                           <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
                            <Stack.Screen name="FinishReservation" component={FinishReservation} />
 
                  <Stack.Screen name="AddArticle" component={AddArticle} />
