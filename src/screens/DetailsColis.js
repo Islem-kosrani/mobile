@@ -151,7 +151,14 @@ Nom et Prénom  d'expéditeur :</Text><Text>islem kosrani</Text>
               textAlign:'center',
             }}>BIEN RECU</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setVisible(false)} style={{
+          <TouchableOpacity onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'StartScreen' }],
+            })
+           
+
+          }} style={{
             backgroundColor:'#5E17EB',
             padding:10,
             borderRadius:10,

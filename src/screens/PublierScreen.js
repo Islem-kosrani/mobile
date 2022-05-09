@@ -4,6 +4,8 @@ import { Icon } from 'react-native-elements';
 import CustumInput from '../components/CustumInput';
 import DatePicker from 'react-native-datepicker';
 import { theme } from '../core/theme';
+import { parseRequiredErrorType } from '../helpers';
+import Dropdown from '../components/Dropdown';
 
 
 const ModalPoup = ({visible, children}) => {
@@ -45,12 +47,42 @@ const ModalPoup = ({visible, children}) => {
 
 
 export default function PublierScreen({ navigation }) {
-  const [date, setDate] = useState(new Date())
+  const [dateStart, setDateStart] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
   const [open, setOpen] = useState(false)
   const [visible, setVisible] = React.useState(false);
+  const [depart,setDepart] = useState("")
+  const [arrivee,setArrive] = useState("")
+  const [poids,setPoids] = useState("")
+  const [prix,setPrix] = useState("")
 
+  const data = [
+    { label: 'Tunis', value: '1' },
+    { label: 'Sfax', value: '2' },
+    { label: 'Sousse', value: '3' },
+    { label: 'Kairouan', value: '4' },
+    { label: 'Bizerte', value: '5' },
+    { label: 'Gabès', value: '6' },
+    { label: 'Ariana', value: '7' },
+    { label: 'Gafsa', value: '8' },
+    { label: 'Monastir', value: '9' },
+    { label: 'Ben Arous', value: '10' },
+    { label: 'Kasserine', value: '11' },
+    { label: 'Médenine', value: '12' },
+    { label: 'Nabeul', value: '13' },
+    { label: 'Tataouine', value: '14' },
+    { label: 'Béja', value: '15' },
+    { label: 'Le Kef', value: '16' },
+    { label: 'Mahdia', value: '17' },
+    { label: 'Sidi Bouzid', value: '18' },
+    { label: 'Jendouba', value: '19' },
+    { label: 'Tozeur', value: '20' },
+    { label: 'La Manouba', value: '21' },
+    { label: 'Siliana', value: '22' },
+    { label: 'Zaghouan', value: '23' },
+    { label: 'Kébili', value: '24' },
   
+  ];
 
   return (
     <SafeAreaView style={{
@@ -89,8 +121,9 @@ export default function PublierScreen({ navigation }) {
              </TouchableOpacity>
         </View>
         <ScrollView>
-          <CustumInput editable={true} placeholder={"Départ"} title={'D\'où partez-vous ?'}/>
-          <CustumInput editable={true} placeholder={"Arrivée"} title={'Où partez-vous ?'}/>
+        <Dropdown title={"Départ"} label="D où partez-vous ?" data={data} onSelect={setDepart} />
+        <Dropdown title={"Arrivée"} label="Où partez-vous ?" data={data} onSelect={setArrive} />
+       
  <Text style={{
             color:'#273386',
             fontWeight:'bold',
@@ -103,7 +136,7 @@ export default function PublierScreen({ navigation }) {
             marginTop: 20,
             marginHorizontal:20,
           }}
-          date={date} //initial date from state
+          date={dateStart} //initial date from state
           mode="date" //The enum of date, datetime and time
           placeholder="sélectionner une date"
           format="DD-MM-YYYY"
@@ -126,7 +159,7 @@ export default function PublierScreen({ navigation }) {
             },
           }}
           onDateChange={(date) => {
-            setDate(date);
+            setDateStart(date);
           }}
         />
           <Text style={{
@@ -136,6 +169,7 @@ export default function PublierScreen({ navigation }) {
             paddingTop:10,
         }}>Daté arrivée</Text>
           <DatePicker
+          minDate={dateStart}
           style={{
             width: '90%',
             marginTop: 20,
@@ -164,12 +198,19 @@ export default function PublierScreen({ navigation }) {
             },
           }}
           onDateChange={(date) => {
-            setEndDate(date);
+            if(dateStart<=date){
+              setEndDate(date);
+            }
+          
           }}
         />
 
-          <CustumInput editable={true} placeholder={"Poids(kg)"} title={'Poids(kg)'}/>
-          <CustumInput editable={true} placeholder={"Prix/kg"} title={'Prix/kg'}/>
+          <CustumInput onChangeText={(text)=>{
+            setPoids(text)
+          }} editable={true} placeholder={"Poids(kg)"} title={'Poids(kg)'}/>
+          <CustumInput onChangeText={(text)=>{
+            setPrix(text)
+          }} editable={true} placeholder={"Prix/kg"} title={'Prix/kg'}/>
           <ModalPoup visible={visible}>
         <View style={{alignItems: 'center'}}>
           <View style={styles.header}>
@@ -188,9 +229,24 @@ export default function PublierScreen({ navigation }) {
         <Text style={{marginVertical: 30, fontSize: 20, textAlign: 'center'}}>
         Félicitations votre annonce est ajoutée      </Text>
       </ModalPoup>
-          <TouchableOpacity onPress={() => setVisible(true)} style={{
+          <TouchableOpacity onPress={() =>{
+            
+            if( parseRequiredErrorType(depart.label)
+            ||parseRequiredErrorType(arrivee.label)
+            ||parseRequiredErrorType(poids)
+            ||parseRequiredErrorType(prix)){
+              
+            }else{
+              setVisible(true)
+            }
+            }} style={{
             alignItems:'center',
-            backgroundColor:'#623262',
+            backgroundColor:
+            parseRequiredErrorType(depart.label)
+            ||parseRequiredErrorType(arrivee.label)
+            ||parseRequiredErrorType(poids)
+            ||parseRequiredErrorType(prix)
+            ?"#E7E7E7":'#623262',
             padding:15,
             marginHorizontal:20,
             borderRadius:15,

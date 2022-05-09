@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, Alert} from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Alert, ImageBackground, ScrollView} from 'react-native'
 import { CheckBox } from 'react-native-elements'
 import {  Text } from 'react-native-paper'
 import Background from '../components/Background'
@@ -14,6 +14,10 @@ import { passwordValidator } from '../helpers/passwordValidator'
 import { nameValidator } from '../helpers/nameValidator'
 import { prenomValidator } from '../helpers/prenomValidator'
 import { confirmpasswordValidator } from '../helpers/confirmpasswordValidator'
+import { Icon } from 'react-native-elements';
+import Animated from 'react-native-reanimated';
+
+
 export default function RegisterScreen({ navigation }) {
  function showAlert(){
 
@@ -26,6 +30,9 @@ export default function RegisterScreen({ navigation }) {
 
   )
  }
+ bs = React.createRef();
+ fall = new Animated.Value(1);
+ const [accept,setAccept]=useState(false);
   const [homme,setHomme]=useState(false);
   const [femme,setFemme]=useState(false);
   const [gender,setGender]=useState("");
@@ -34,6 +41,30 @@ export default function RegisterScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
   const [confirmpassword, setConfirmPassword] = useState({ value: '', error: '' })
+    renderInner = () => (
+
+    <View style={styles.panel}>
+         <View style={{alignItems:'center'}}>
+       
+             <Text style={styles.panelTitle}>telecharger photo</Text>
+             <Text style={styles.panelSubtitle}>choisir votre photo      </Text>
+        
+         </View>
+
+
+         <TouchableOpacity style={styles.panelButton}>
+             <Text style={styles.panelButtonTitle}>Prendre une photo</Text>
+         </TouchableOpacity>
+         <TouchableOpacity style={styles.panelButton}>
+             <Text style={styles.panelButtonTitle}>Telecharger photo</Text>
+         </TouchableOpacity>
+         <TouchableOpacity style={styles.panelButton} onPress={()=>bs.current.snapTo(1)}>
+             <Text style={styles.panelButtonTitle}>Annuler</Text>
+         </TouchableOpacity>
+
+
+</View>
+  );
   const genderHomme = () =>{
 
     setHomme(true);
@@ -44,6 +75,7 @@ export default function RegisterScreen({ navigation }) {
     setHomme(false);
     setFemme(true);
   }
+
   const onSignUpPressed = () => {
     
     const nameError = nameValidator(name.value)
@@ -66,10 +98,43 @@ export default function RegisterScreen({ navigation }) {
   }
 
   return (
+    <ScrollView>
+
+   
     <Background>
       <BackButton goBack={navigation.goBack} />
       <Logo />
       <Header>Créer Votre Compte</Header>
+      <TouchableOpacity onPress={() => {}}>
+
+<ImageBackground
+   source={{
+     uri:
+       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLvdLq5DN6TMnCLHtc9E9DyJQyaRJpPfFFdJ75JF0eOcL9iQzX2ErYeqz1cdV8ABkUtXY&usqp=CAU',
+   }}
+   //borderRadius style will help us make the Round Shape Image
+   style={{ width: 100, height: 100, borderRadius: 45 / 2,alignSelf:'center',
+ marginTop:10, }}
+ ><View style ={{
+   flex:1,
+   justifyContent:'center',
+   alignItems:'center',
+ }}>
+   <Icon name="camera"    type={'feather'} size={35} color="#fff" style={{
+
+     opacity:0.66,
+     alignItems:'center',
+     justifyContent:'center',
+     borderWidth:0.5,
+     borderColor:'#fff',
+     borderRadius:9,
+
+     
+   }}/>
+
+ </View>
+</ImageBackground> 
+       </TouchableOpacity>
       <TextInput
         label="Nom"
         returnKeyType="next"
@@ -108,7 +173,7 @@ export default function RegisterScreen({ navigation }) {
         secureTextEntry
       />
        <TextInput
-        label=" Confirmation de mot passe"
+        label="Confirmation de mot passe"
         returnKeyType="done"
         value={confirmpassword.value}
         onChangeText={(text) => setConfirmPassword({ value: text, error: '' })}
@@ -135,6 +200,34 @@ export default function RegisterScreen({ navigation }) {
         uncheckedIcon="circle-o"
         onPress={genderFemme}
       />
+      <View style={{
+        flexDirection:'row',
+        alignSelf:'flex-start'
+        
+      }}>
+        <TouchableOpacity onPress={()=>{
+         setAccept(!accept)
+        }} style={{
+          width:30,
+          height:30,
+          borderRadius:30/2,
+          borderWidth:2,
+          justifyContent:'center'
+
+        }}>
+      {accept==true?  <Icon 
+          name={'check'} 
+          type={'ant-design'}
+          color={'#000000'}
+          size={20}
+          
+          />:<View/>}
+        </TouchableOpacity>
+        <Text style={{
+          textAlignVertical:'center',
+          marginStart:10,
+        }}>Accepter les conditions générales</Text>
+      </View>
 
       
       <Button
@@ -155,6 +248,7 @@ export default function RegisterScreen({ navigation }) {
       </View>
       
     </Background>
+    </ScrollView>
   )
 }
 

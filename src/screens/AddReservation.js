@@ -3,11 +3,17 @@ import { TouchableOpacity, StyleSheet, View , Text,SafeAreaView} from 'react-nat
 import { } from 'react-native-paper'
 import { Icon } from 'react-native-elements';
 import CustumInput from '../components/CustumInput';
+import { parseRequiredErrorType } from '../helpers';
 
 
 
 export default function AddReservation({ navigation }) {
-  
+  const [nom,setNom] = useState("")
+  const [prenom,setPrenom] = useState("")
+  const [adresse,setAdresse] = useState("")
+  const [phone,setPhone] = useState("")
+  const [email,setEmail] = useState("")
+
   return (
     <SafeAreaView style={{
         paddingTop:40,
@@ -48,15 +54,41 @@ export default function AddReservation({ navigation }) {
               
 
           }}>
-          <CustumInput editable={true} placeholder={"Nom"} title={'Nom'}/>
-          <CustumInput editable={true} placeholder={"Prénom"} title={'Prénom'}/>
-          <CustumInput  editable={true} placeholder={"Adresse"} title={'Adresse'}/>
-          <CustumInput  inputType={'numeric'} editable={true} placeholder={"Téléphone"} title={'Téléphone'}/>
-          <CustumInput inputType={'email-address'} editable={true} placeholder={"Email"} title={'Email'}/>
+          <CustumInput value={nom} onChangeText={(text)=>{
+            setNom(text)
+          }} editable={true} placeholder={"Nom"} title={'Nom'}/>
+          <CustumInput value={prenom} onChangeText={(text)=>{
+            setPrenom(text)
+          }} editable={true} placeholder={"Prénom"} title={'Prénom'}/>
+          <CustumInput value={adresse} onChangeText={(text)=>{
+            setAdresse(text)
+          }}  editable={true} placeholder={"Adresse"} title={'Adresse'}/>
+          <CustumInput value={phone} onChangeText={(text)=>{
+            setPhone(text)
+          }}  inputType={'numeric'} editable={true} placeholder={"Téléphone"} title={'Téléphone'}/>
+          <CustumInput value={email} onChangeText={(text)=>{
+            setEmail(text)
+          }} inputType={'email-address'} editable={true} placeholder={"Email"} title={'Email'}/>
           <TouchableOpacity onPress={() => {
-               navigation.navigate("FinishReservation")
+                if( parseRequiredErrorType(nom)
+                ||parseRequiredErrorType(prenom)
+                ||parseRequiredErrorType(adresse)
+                ||parseRequiredErrorType(phone)
+                ||parseRequiredErrorType(email)
+                ){
+                  
+                }else{
+                  navigation.navigate("FinishReservation")
+                }
+               
           }} style={{
-            backgroundColor:'#623262',
+            backgroundColor:
+            parseRequiredErrorType(nom)
+            ||parseRequiredErrorType(prenom)
+            ||parseRequiredErrorType(adresse)
+            ||parseRequiredErrorType(phone)
+            ||parseRequiredErrorType(email)
+            ?"#E7E7E7":'#623262',
             padding:10,
             borderRadius:5,
             marginHorizontal:10,

@@ -3,11 +3,17 @@ import { TouchableOpacity, StyleSheet, View , Text,SafeAreaView} from 'react-nat
 import { } from 'react-native-paper'
 import { Icon } from 'react-native-elements';
 import CustumInput from '../components/CustumInput';
+import { parseRequiredErrorType } from '../helpers';
 
 
 
 export default function AddArticle({ navigation }) {
-  
+  const [poids,setPoids] = useState("")
+    const [longeur,setLongeur] = useState("")
+    const [largeur,setLargeur] = useState("")
+    const [hauteur,setHateur] = useState("")
+
+    
   return (
     <SafeAreaView style={{
         paddingTop:40,
@@ -49,26 +55,48 @@ export default function AddArticle({ navigation }) {
 
           }}>
 
-          <CustumInput editable={true} placeholder={"Poids"} title={'Poids(Kg)'}
+          <CustumInput value={poids} onChangeText={(text)=>{
+            setPoids(text)
+          }} editable={true} placeholder={"Poids"} title={'Poids(Kg)'}
          inputType={'numeric'}
           
           />
 
 
          
-          <CustumInput  editable={true} inputType={'numeric'} placeholder={"Longueur"} title={'Longueur'}
+          <CustumInput value={longeur} onChangeText={(text)=>{
+            setLongeur(text)
+          }}  editable={true} inputType={'numeric'} placeholder={"Longueur"} title={'Longueur'}
           
           
           />
 
-          <CustumInput  editable={true} inputType={'numeric'} placeholder={"Largeur"} title={'Largeur'}/>
+          <CustumInput value={largeur} onChangeText={(text)=>{
+            setLargeur(text)
+          }}  editable={true} inputType={'numeric'} placeholder={"Largeur"} title={'Largeur'}/>
 
-          <CustumInput  editable={true} inputType={'numeric'} placeholder={"Hauteur"} title={'Hauteur'}/>
+          <CustumInput value={hauteur} onChangeText={(text)=>{
+            setHateur(text)
+          }}  editable={true} inputType={'numeric'} placeholder={"Hauteur"} title={'Hauteur'}/>
 
           <TouchableOpacity onPress={() => {
-               navigation.navigate("AddReservation")
+               
+               if( parseRequiredErrorType(poids)
+               ||parseRequiredErrorType(longeur)
+               ||parseRequiredErrorType(largeur)
+               ||parseRequiredErrorType(hauteur)){
+                 
+               }else{
+                navigation.navigate("AddReservation")
+               }
+              
           }} style={{
-            backgroundColor:'#623262',
+            backgroundColor:
+            parseRequiredErrorType(poids)
+            ||parseRequiredErrorType(longeur)
+            ||parseRequiredErrorType(largeur)
+            ||parseRequiredErrorType(hauteur)
+            ?"#E7E7E7":'#623262',
             padding:10,
             borderRadius:5,
             marginHorizontal:10,

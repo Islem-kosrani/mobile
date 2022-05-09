@@ -269,8 +269,25 @@ setVisible(true)
 
       
       </ModalPoup>
+      
       </ScrollView>
-
+      <TouchableOpacity onPress={()=>{
+       navigation.navigate("NotificationScreen")
+     }}  style={{
+              width:40,
+              height:40,
+              borderRadius:40/2,
+              backgroundColor:'green',
+              position:'absolute',
+              bottom:60,
+              right:40
+            }}><Icon 
+          name={'notifications-none'} 
+          type={'material-icons'}
+          color={'#FFFFFF'}
+          size={35}
+          
+          /></TouchableOpacity>
     </SafeAreaView>
   );
           });

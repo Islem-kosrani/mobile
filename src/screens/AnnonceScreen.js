@@ -111,6 +111,23 @@ export default function AnnonceScreen({ navigation }) {
         }}
         keyExtractor={item => item.id}
       />
+        <TouchableOpacity onPress={()=>{
+       navigation.navigate("NotificationScreen")
+     }}  style={{
+              width:40,
+              height:40,
+              borderRadius:40/2,
+              backgroundColor:'green',
+              position:'absolute',
+              bottom:0,
+              right:40
+            }}><Icon 
+          name={'notifications-none'} 
+          type={'material-icons'}
+          color={'#FFFFFF'}
+          size={35}
+          
+          /></TouchableOpacity>
     </SafeAreaView>
   )
 }

@@ -1,11 +1,45 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Text, View,SafeAreaView, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import Background from '../components/Background'
 import { Icon } from 'react-native-elements';
+import Dropdown from '../components/Dropdown';
+import DatePicker from 'react-native-datepicker';
 
 
 export default function AccueilScreen({ navigation }) {
     const [data,setData] = React.useState([{id:1},{id:2},{id:3},{id:4},{id:5}])
+    const [showSearch,setShowSearch] = useState("")
+    const [depart,setDepart] = useState("")
+    const [arrivee,setArrive] = useState("")
+    const [dateStart, setDateStart] = useState(new Date())
+    const [endDate, setEndDate] = useState(new Date())
+    const villes = [
+      { label: 'Tunis', value: '1' },
+      { label: 'Sfax', value: '2' },
+      { label: 'Sousse', value: '3' },
+      { label: 'Kairouan', value: '4' },
+      { label: 'Bizerte', value: '5' },
+      { label: 'Gabès', value: '6' },
+      { label: 'Ariana', value: '7' },
+      { label: 'Gafsa', value: '8' },
+      { label: 'Monastir', value: '9' },
+      { label: 'Ben Arous', value: '10' },
+      { label: 'Kasserine', value: '11' },
+      { label: 'Médenine', value: '12' },
+      { label: 'Nabeul', value: '13' },
+      { label: 'Tataouine', value: '14' },
+      { label: 'Béja', value: '15' },
+      { label: 'Le Kef', value: '16' },
+      { label: 'Mahdia', value: '17' },
+      { label: 'Sidi Bouzid', value: '18' },
+      { label: 'Jendouba', value: '19' },
+      { label: 'Tozeur', value: '20' },
+      { label: 'La Manouba', value: '21' },
+      { label: 'Siliana', value: '22' },
+      { label: 'Zaghouan', value: '23' },
+      { label: 'Kébili', value: '24' },
+    
+    ];
   return (
     <SafeAreaView style={{
       paddingTop:40,
@@ -23,7 +57,140 @@ export default function AccueilScreen({ navigation }) {
             }}>Chrono Liv</Text>
              
         </View>
-       
+        <View style={{
+          flexDirection:'row',
+          justifyContent:'space-between',
+          marginHorizontal:40,
+          marginTop:5
+        }}>
+          <View/>
+          <TouchableOpacity
+          onPress={()=>{
+            setShowSearch(!showSearch)
+          }}
+          style={{
+                backgroundColor:'green',
+                width:40,
+                height:40,
+                borderRadius:40/2,
+                alignItems:'center',
+                justifyContent:'center',
+                
+             
+            }}>
+            <Icon 
+          name={'search'} 
+          type={'fontisto'}
+          color={'#FFFFFF'}
+          size={25}
+          
+          />
+            </TouchableOpacity>
+        </View>
+        {showSearch?<View>
+          <Dropdown title={"Départ"} label="D où partez-vous ?" data={data} onSelect={setDepart} />
+        <Dropdown title={"Arrivée"} label="Où partez-vous ?" data={data} onSelect={setArrive} />
+        <Text style={{
+            color:'#1935F1',
+            fontWeight:'bold',
+            marginHorizontal:20,
+            paddingTop:10,
+        }}>Daté départ</Text>
+          <DatePicker
+          style={{
+            width: '90%',
+            marginTop: 20,
+            marginHorizontal:20,
+          }}
+          date={dateStart} //initial date from state
+          mode="date" //The enum of date, datetime and time
+          placeholder="sélectionner une date"
+          format="DD-MM-YYYY"
+          confirmBtnText="Confirmer"
+          cancelBtnText="Annuler"
+          customStyles={{
+            dateIcon: {
+              //display: 'none',
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              width: '100%',
+    height: 44,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#e8e8e8'
+            },
+          }}
+          onDateChange={(date) => {
+            setDateStart(date);
+          }}
+        />
+          <Text style={{
+            color:'#1935F1',
+            fontWeight:'bold',
+            marginHorizontal:20,
+            paddingTop:10,
+        }}>Daté arrivée</Text>
+          <DatePicker
+          minDate={dateStart}
+          style={{
+            width: '90%',
+            marginTop: 20,
+            marginHorizontal:20,
+          }}
+          date={endDate} //initial date from state
+          mode="date" //The enum of date, datetime and time
+          placeholder="sélectionner une date"
+          format="DD-MM-YYYY"
+          confirmBtnText="Confirmer"
+          cancelBtnText="Annuler"
+          customStyles={{
+            dateIcon: {
+              //display: 'none',
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              width: '100%',
+    height: 44,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#e8e8e8'
+            },
+          }}
+          onDateChange={(date) => {
+            if(dateStart<=date){
+              setEndDate(date);
+            }
+          
+          }}
+        />
+        <TouchableOpacity onPress={() => {
+            
+              
+          }} style={{
+            backgroundColor:
+            '#623262',
+            padding:10,
+            marginTop:20,
+            borderRadius:5,
+            marginHorizontal:10,
+            width:'93%'
+
+          }}>
+            <Text style={{
+              color:'white',
+              fontWeight:'bold',
+              textAlign:'center',
+            }}>Rechercher</Text>
+          </TouchableOpacity>
+        </View>:<View/>}
+         
 
          <FlatList
         data={data}
@@ -250,7 +417,7 @@ export default function AccueilScreen({ navigation }) {
               borderRadius:40/2,
               backgroundColor:'green',
               position:'absolute',
-              bottom:60,
+              bottom:70,
               right:40
             }}><Icon 
           name={'notifications-none'} 
