@@ -53,7 +53,7 @@ const ModalPoup = ({visible, children}) => {
 
 
 const ProfileScreen =(({ navigation }) =>{
-  const [visible, setVisible] = React.useState(false);
+  const [visibleSexe, setVisibleSexe] = React.useState(false);
 
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
@@ -112,6 +112,45 @@ const ProfileScreen =(({ navigation }) =>{
         callbackNode={fall}
         enabledGestureInteraction={true}
       />
+       <ModalPoup visible={visibleSexe}>
+        <View style={{alignItems: 'center'}}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => setVisibleSexe(false)}>
+              <Image
+                source={require('../assets/X.png')}
+                style={{height: 30, width: 30}}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={{alignItems: 'center'}}>
+        
+        </View>
+        <TouchableOpacity onPress={()=>{
+          setSexe("Homme")
+          setVisibleSexe(false)
+        }} style={styles.btnSexe}>
+        <Text style={{
+          textAlign:'center',
+          fontWeight:'bold',
+          fontSize:16,
+          color:'white',
+        }}>Homme</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={()=>{
+           setSexe("Femme")
+           setVisibleSexe(false)
+        }} style={styles.btnSexe}>
+          <Text style={{
+          textAlign:'center',
+          fontWeight:'bold',
+          fontSize:16,
+          color:'white',
+        }}>Femme</Text>
+               </TouchableOpacity>
+
+      
+      </ModalPoup>
         <ScrollView>
 
     <View style={{
@@ -203,7 +242,7 @@ const ProfileScreen =(({ navigation }) =>{
       setEmail("")
     }} from={"Profile"} value={email} inputType={'email-address'} editable={true} placeholder={"Email"} title={'Email'}/>
     <CustumInput onPress={()=>{
-setVisible(true)
+        setVisibleSexe(true)
     }}  editable={false} placeholder={sexe} title={'Sexe'}/>
       <TouchableOpacity onPress={() => {}} style={{
             backgroundColor:'#623262',
@@ -236,45 +275,7 @@ setVisible(true)
             }}>Changer Mot de passe</Text>
           </TouchableOpacity>
   
-  <ModalPoup visible={visible}>
-        <View style={{alignItems: 'center'}}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={() => setVisible(false)}>
-              <Image
-                source={require('../assets/X.png')}
-                style={{height: 30, width: 30}}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={{alignItems: 'center'}}>
-        
-        </View>
-        <TouchableOpacity onPress={()=>{
-          setSexe("Homme")
-          setVisible(false)
-        }} style={styles.btnSexe}>
-        <Text style={{
-          textAlign:'center',
-          fontWeight:'bold',
-          fontSize:16,
-          color:'white',
-        }}>Homme</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{
-           setSexe("Femme")
-          setVisible(false)
-        }} style={styles.btnSexe}>
-          <Text style={{
-          textAlign:'center',
-          fontWeight:'bold',
-          fontSize:16,
-          color:'white',
-        }}>Femme</Text>
-               </TouchableOpacity>
-
-      
-      </ModalPoup>
+  
       
       </ScrollView>
       <TouchableOpacity onPress={()=>{
@@ -294,6 +295,7 @@ setVisible(true)
           size={35}
           
           /></TouchableOpacity>
+         
     </SafeAreaView>
   );
           });

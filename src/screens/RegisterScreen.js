@@ -98,17 +98,32 @@ export default function RegisterScreen({ navigation }) {
   }
 
   return (
-    <ScrollView>
+    <ScrollView style={{
+      backgroundColor: theme.colors.surface,
+    }}>
 
    
-    <Background>
+ 
       <BackButton goBack={navigation.goBack} />
-      <Logo />
+        <View style={{
+          justifyContent:'center',
+          alignItems:'center'
+        }}>
+        <Logo />
       <Header>Créer Votre Compte</Header>
+        </View>
+    <View style={{
+      paddingHorizontal:20
+    }}>
+
+   
       <TextInput
         label="Nom"
         returnKeyType="next"
         value={name.value}
+        style={{
+          paddingHorizontal:20
+        }}
         onChangeText={(text) => setName({ value: text, error: '' })}
         error={!!name.error}
         errorText={name.error}
@@ -152,9 +167,12 @@ export default function RegisterScreen({ navigation }) {
         secureTextEntry
       />
       <Text>Etes-Vous?? </Text>
+      </View>
+      <View style={{
+        paddingHorizontal:10
+      }}>
       <CheckBox 
         title="Homme"
-        center
         checked={homme}
         checkedIcon="dot-circle-o"
         uncheckedIcon="circle-o"
@@ -164,17 +182,17 @@ export default function RegisterScreen({ navigation }) {
 
      <CheckBox 
         title="Femme"
-        style={{
-          alignSelf:'left'
-        }}
         checked={femme}
         checkedIcon="dot-circle-o"
         uncheckedIcon="circle-o"
         onPress={genderFemme}
       />
+      </View>
+     
       <View style={{
         flexDirection:'row',
-        alignSelf:'flex-start'
+        alignSelf:'flex-start',
+        paddingHorizontal:20
         
       }}>
         <TouchableOpacity onPress={()=>{
@@ -198,11 +216,18 @@ export default function RegisterScreen({ navigation }) {
         <Text style={{
           textAlignVertical:'center',
           marginStart:10,
-        }}>Accepter les conditions générales</Text>
+        }}>Accepter les <Text onPress={()=>{
+         navigation.navigate('TermsAndConditionScreen')
+        }} style={{
+          textDecorationLine:'underline'
+        }}>conditions générales</Text></Text>
       </View>
-
-      
-      <Button
+        <View style={{
+          paddingHorizontal:20,
+          justifyContent:'center',
+          alignItems:'center'
+        }}>
+        <Button
         mode="contained"
         onPress={showAlert}
         style={{ marginTop: 24 }}
@@ -219,7 +244,10 @@ export default function RegisterScreen({ navigation }) {
         </TouchableOpacity>
       </View>
       
-    </Background>
+        </View>
+      
+     
+    
     </ScrollView>
   )
 }
