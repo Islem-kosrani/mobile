@@ -17,6 +17,7 @@
     "@react-navigation/stack": "^5.12.8",
     "@rneui/base": "github:react-native-elements/react-native-elements#base",
     "@rneui/themed": "^4.0.0-rc.1",
+    "@types/react": "~17.0.21",
     "expo": "^44.0.0",
     "expo-dev-client": "~0.8.5",
     "expo-status-bar": "~1.2.0",
@@ -36,7 +37,8 @@
     "react-native-status-bar-height": "^2.6.0",
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "0.17.1",
-    "reanimated-bottom-sheet": "^1.0.0-alpha.22"
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
+    "typescript": "~4.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

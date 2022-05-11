@@ -53,7 +53,7 @@ const Dropdown: FC<Props> = ({ label, data,title, onSelect }) => {
           style={styles.overlay}
           onPress={() => setVisible(false)}
         >
-          <View style={[styles.dropdown, { top: dropdownTop }]}>
+          <View style={[styles.dropdown,]}>
             <FlatList
               data={data}
               renderItem={renderItem}

@@ -44,7 +44,7 @@ export default function AccueilScreen({ navigation }) {
     <SafeAreaView style={{
       paddingTop:40,
   }}>
-        <View style={{
+        {showSearch==false?<View style={{
             backgroundColor:'#623262',
             paddingVertical:10,
             justifyContent:'center',
@@ -56,7 +56,7 @@ export default function AccueilScreen({ navigation }) {
                textAlignVertical:'center',
             }}>Chrono Liv</Text>
              
-        </View>
+        </View>:null}
         <View style={{
           flexDirection:'row',
           justifyContent:'space-between',
@@ -88,8 +88,8 @@ export default function AccueilScreen({ navigation }) {
             </TouchableOpacity>
         </View>
         {showSearch?<View>
-          <Dropdown title={"Départ"} label="D où partez-vous ?" data={data} onSelect={setDepart} />
-        <Dropdown title={"Arrivée"} label="Où partez-vous ?" data={data} onSelect={setArrive} />
+          <Dropdown title={"Départ"} label="D où partez-vous ?" data={villes} onSelect={setDepart} />
+        <Dropdown title={"Arrivée"} label="Où partez-vous ?" data={villes} onSelect={setArrive} />
         <Text style={{
             color:'#1935F1',
             fontWeight:'bold',
@@ -417,7 +417,7 @@ export default function AccueilScreen({ navigation }) {
               borderRadius:40/2,
               backgroundColor:'green',
               position:'absolute',
-              bottom:70,
+              bottom:80,
               right:40
             }}><Icon 
           name={'notifications-none'} 

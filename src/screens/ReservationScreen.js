@@ -63,7 +63,10 @@ export default function ReservationScreen({ navigation }) {
         <FlatList
         data={data}
         renderItem={(item)=>{
-            return    <TouchableOpacity onPress={() => setVisible(true)}><View style={[styles.card, styles.shadowProp]}>
+            return    <TouchableOpacity onPress={() =>{
+              
+              navigation.navigate('DetailsMission')
+            }}><View style={[styles.card, styles.shadowProp]}>
           
           
 

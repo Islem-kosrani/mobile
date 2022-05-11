@@ -150,6 +150,12 @@ const ProfileScreen =(({ navigation }) =>{
               </TouchableOpacity>
 
       <TouchableOpacity
+      onPress={()=>{
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'StartScreen' }],
+        })
+      }}
                 style={{position:'absolute',top:20,right:20}}
 
       >
