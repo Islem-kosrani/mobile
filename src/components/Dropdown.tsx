@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
+import CustumInput from './CustumInput';
 
 interface Props {
   label: string;
@@ -21,6 +22,10 @@ const Dropdown: FC<Props> = ({ label, data,title, onSelect }) => {
   const DropdownButton = useRef();
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(undefined);
+  const [ville,setVille] = useState("")
+  const [villes,setVilles] = useState(data)
+
+
   const [dropdownTop, setDropdownTop] = useState(0);
 
   const toggleDropdown = (): void => {
@@ -54,10 +59,27 @@ const Dropdown: FC<Props> = ({ label, data,title, onSelect }) => {
           onPress={() => setVisible(false)}
         >
           <View style={[styles.dropdown,]}>
+          <CustumInput onChangeText={(value)=>{
+              setVille(value);
+              var per  = data.filter(el => el.label.toLowerCase().startsWith(value.toLowerCase()) )
+              if(value.lenght==0){
+                setVilles(data)
+              }else{
+                setVilles(per)
+              }
+             
+
+    }} onCancel={()=>{
+    setVille("")
+    }} from={"Profile"} value={ville} editable={true} placeholder={"Ville"} title={'Rechercher une  Ville'}/>
             <FlatList
-              data={data}
+              data={villes}
+              style={{
+                height:'100%'
+              }}
               renderItem={renderItem}
               keyExtractor={(item, index) => index.toString()}
+              ListFooterComponent={<View style={{height: 250}}/>}
             />
           </View>
         </TouchableOpacity>
@@ -121,6 +143,7 @@ const styles = StyleSheet.create({
   overlay: {
     width: '100%',
     height: '100%',
+    flex: 1
   },
   item: {
     paddingHorizontal: 10,

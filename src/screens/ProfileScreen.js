@@ -1,19 +1,13 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity,SafeAreaView,ScrollView ,ImageBackground,Image, Modal,} from 'react-native'
+import {Text ,View, StyleSheet, TouchableOpacity,SafeAreaView,ScrollView ,ImageBackground,Image, Modal,} from 'react-native'
 import { Icon } from 'react-native-elements';
 import Animated from 'react-native-reanimated';
 
-import {  Avatar,Title,Caption,TouchableRipple,Text } from 'react-native-paper'
-import Background from '../components/Background'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import TextInput from '../components/TextInput'
-import BackButton from '../components/BackButton'
-import { theme } from '../core/theme'
+import {  Avatar,Title,Caption,TouchableRipple } from 'react-native-paper'
 import CustumInput from '../components/CustumInput';
 import { color } from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
+import { CheckBox } from 'react-native-elements'
 
 const ModalPoup = ({visible, children}) => {
   const [showModal, setShowModal] = React.useState(visible);
@@ -58,9 +52,22 @@ const ProfileScreen =(({ navigation }) =>{
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
-
+  const [homme,setHomme]=useState(false);
+  const [femme,setFemme]=useState(false);
   const [email, setEmail] = React.useState("");
   const [sexe, setSexe] = React.useState("Homme");
+  const genderHomme = () =>{
+
+    setHomme(true);
+    setFemme(false);
+  }
+  const genderFemme = () =>{
+
+    setHomme(false);
+    setFemme(true);
+  }
+
+
   renderInner = () => (
 
     <View style={styles.panel}>
@@ -241,9 +248,45 @@ const ProfileScreen =(({ navigation }) =>{
     }} onCancel={()=>{
       setEmail("")
     }} from={"Profile"} value={email} inputType={'email-address'} editable={true} placeholder={"Email"} title={'Email'}/>
-    <CustumInput onPress={()=>{
-        setVisibleSexe(true)
-    }}  editable={false} placeholder={sexe} title={'Sexe'}/>
+    <View style={{
+        paddingHorizontal:10,
+        marginBottom:5
+      }}>
+          <Text style={{
+            color:'#1935F1',
+            fontWeight:'bold',
+            paddingHorizontal:10,
+            marginBottom:5
+        }}>Sexe</Text>
+      
+        <CheckBox 
+        title="Homme"
+        checked={homme}
+        containerStyle ={{   width: '100%',
+        marginTop: 10,
+      
+        backgroundColor: '#e8e8e8'}}
+        checkedIcon="dot-circle-o"
+        uncheckedIcon="circle-o"
+        onPress={genderHomme}
+      
+      />
+       
+   
+     
+
+     <CheckBox 
+        title="Femme"
+        checked={femme}
+        checkedIcon="dot-circle-o"
+        uncheckedIcon="circle-o"
+        containerStyle ={{   width: '100%',
+        marginTop: 10,
+        marginBottom: 10,
+        backgroundColor: '#e8e8e8'}}
+        onPress={genderFemme}
+      />
+      </View>
       <TouchableOpacity onPress={() => {}} style={{
             backgroundColor:'#623262',
             padding:10,

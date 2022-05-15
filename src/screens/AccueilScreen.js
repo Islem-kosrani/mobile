@@ -44,7 +44,7 @@ export default function AccueilScreen({ navigation }) {
     <SafeAreaView style={{
       paddingTop:40,
   }}>
-        {showSearch==false?<View style={{
+       <View style={{
             backgroundColor:'#623262',
             paddingVertical:10,
             justifyContent:'center',
@@ -55,8 +55,27 @@ export default function AccueilScreen({ navigation }) {
                 fontSize:15,
                textAlignVertical:'center',
             }}>Chrono Liv</Text>
+               <TouchableOpacity onPress={()=>{
+                 setShowSearch(!showSearch)
+               }} style={{
+                   flexDirection:'row',
+                   position:'absolute',
+                   right:20,
+                   borderRadius:10,
+                   justifyContent:'center',
+                 
+               }}>
+                  <Icon 
+          name={'search'} 
+          type={'fontisto'}
+          color={'#FFFFFF'}
+          size={20}
+          
+          />
+           
+               </TouchableOpacity>
              
-        </View>:null}
+        </View>
         <View style={{
           flexDirection:'row',
           justifyContent:'space-between',
@@ -64,28 +83,7 @@ export default function AccueilScreen({ navigation }) {
           marginTop:5
         }}>
           <View/>
-          <TouchableOpacity
-          onPress={()=>{
-            setShowSearch(!showSearch)
-          }}
-          style={{
-                backgroundColor:'green',
-                width:40,
-                height:40,
-                borderRadius:40/2,
-                alignItems:'center',
-                justifyContent:'center',
-                
-             
-            }}>
-            <Icon 
-          name={'search'} 
-          type={'fontisto'}
-          color={'#FFFFFF'}
-          size={25}
-          
-          />
-            </TouchableOpacity>
+       
         </View>
         {showSearch?<View>
           <Dropdown title={"Départ"} label="D où partez-vous ?" data={villes} onSelect={setDepart} />
