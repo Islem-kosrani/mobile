@@ -107,7 +107,7 @@ export default function NotificationScreen({ navigation }) {
                 
 
             }}>
-            <Text style={styles.txt1}>Lorem Ipsum is simply dummy text of the printing and typesetting industry</Text>
+            <Text style={styles.txt1}>mayssa vous propose une nouelle mission</Text>
             <Text style={styles.txt2}>4h</Text>
             </View>
             
@@ -143,14 +143,14 @@ export default function NotificationScreen({ navigation }) {
           fontWeight:'bold',
           fontSize:16,
           
-        }}>Notification</Text>
+        }}>vous avez une nouvelle mission</Text>
          <Text style={{
           textAlign:'center',
           fontWeight:'300',
           fontSize:16,
           marginTop:5
           
-        }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry</Text>
+        }}>mayssa a une une nouvelle mission pour vous lors de votre deplacement</Text>
              
 
       </ModalPoup>

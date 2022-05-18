@@ -36,6 +36,8 @@ export default function RegisterScreen({ navigation }) {
   const [homme,setHomme]=useState(false);
   const [femme,setFemme]=useState(false);
   const [gender,setGender]=useState("");
+  
+  const [cin, setCin] = useState({ value: '', error: '' })
   const [name, setName] = useState({ value: '', error: '' })
   const [prenom, setPrenom] = useState({ value: '', error: '' })
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -83,7 +85,7 @@ export default function RegisterScreen({ navigation }) {
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
     const confirmpasswordError = confirmpasswordValidator(confirmpassword.value)
-    if (emailError || passwordError || nameError ||prenomError ||confirmpasswordError) {
+    if (emailError || passwordError || nameError ||prenomError ||confirmpasswordError ) {
       setName({ ...name, error: nameError })
       setPrenom({ ...prenom, error: prenomError })
       setEmail({ ...email, error: emailError })
@@ -115,7 +117,18 @@ export default function RegisterScreen({ navigation }) {
     <View style={{
       paddingHorizontal:20
     }}>
-
+ <TextInput
+        label="CIN"
+        returnKeyType="next"
+        value={cin.value}
+        style={{
+          paddingHorizontal:20
+        }}
+        onChangeText={(text) => setCin({ value: text, error: '' })}
+        error={!!cin.error}
+        keyboardType="numeric"
+        errorText={cin.error}
+      />
    
       <TextInput
         label="Nom"
@@ -209,7 +222,7 @@ export default function RegisterScreen({ navigation }) {
           name={'check'} 
           type={'ant-design'}
           color={'#000000'}
-          size={20}
+          size={10}
           
           />:<View/>}
         </TouchableOpacity>

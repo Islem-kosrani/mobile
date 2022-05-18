@@ -8,6 +8,7 @@ import { parseRequiredErrorType } from '../helpers';
 
 
 export default function AddArticle({ navigation }) {
+  const [type,settype] = useState("")
   const [poids,setPoids] = useState("")
     const [longeur,setLongeur] = useState("")
     const [largeur,setLargeur] = useState("")
@@ -54,7 +55,12 @@ export default function AddArticle({ navigation }) {
               
 
           }}>
-
+ <CustumInput value={type} onChangeText={(text)=>{
+            settype(text)
+          }} editable={true} placeholder={"Type"} title={'Type'}
+         inputType={'text'}
+          
+          />
           <CustumInput value={poids} onChangeText={(text)=>{
             setPoids(text)
           }} editable={true} placeholder={"Poids"} title={'Poids(Kg)'}
@@ -81,7 +87,8 @@ export default function AddArticle({ navigation }) {
 
           <TouchableOpacity onPress={() => {
                
-               if( parseRequiredErrorType(poids)
+               if( parseRequiredErrorType(type)
+               ||parseRequiredErrorType(poids)
                ||parseRequiredErrorType(longeur)
                ||parseRequiredErrorType(largeur)
                ||parseRequiredErrorType(hauteur)){
@@ -92,7 +99,8 @@ export default function AddArticle({ navigation }) {
               
           }} style={{
             backgroundColor:
-            parseRequiredErrorType(poids)
+            parseRequiredErrorType(type)
+            ||parseRequiredErrorType(poids)
             ||parseRequiredErrorType(longeur)
             ||parseRequiredErrorType(largeur)
             ||parseRequiredErrorType(hauteur)
