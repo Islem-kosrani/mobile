@@ -83,8 +83,8 @@ export default function RegisterScreen({ navigation }) {
     const nameError = nameValidator(name.value)
     const prenomError = prenomValidator(prenom.value)
     const emailError = emailValidator(email.value)
-    const passwordError = passwordValidator(password.value)
-    const confirmpasswordError = confirmpasswordValidator(confirmpassword.value)
+    const passwordError = passwordValidator(password.value,confirmpassword.value)
+    const confirmpasswordError = confirmpasswordValidator(confirmpassword.value,password.value)
     if (emailError || passwordError || nameError ||prenomError ||confirmpasswordError ) {
       setName({ ...name, error: nameError })
       setPrenom({ ...prenom, error: prenomError })
@@ -105,8 +105,12 @@ export default function RegisterScreen({ navigation }) {
     }}>
 
    
- 
+      <View style={{
+        marginStart:20,
+      }}>
       <BackButton goBack={navigation.goBack} />
+      </View>
+     
         <View style={{
           justifyContent:'center',
           alignItems:'center'
@@ -242,7 +246,7 @@ export default function RegisterScreen({ navigation }) {
         }}>
         <Button
         mode="contained"
-        onPress={showAlert}
+        onPress={onSignUpPressed}
         style={{ marginTop: 24 }}
 
 

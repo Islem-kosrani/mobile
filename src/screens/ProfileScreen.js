@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Text ,View, StyleSheet, TouchableOpacity,SafeAreaView,ScrollView ,ImageBackground,Image, Modal,} from 'react-native'
 import { Icon } from 'react-native-elements';
 import Animated from 'react-native-reanimated';
+import * as ImagePicker from 'expo-image-picker';
 
 import {  Avatar,Title,Caption,TouchableRipple } from 'react-native-paper'
 import CustumInput from '../components/CustumInput';
@@ -48,6 +49,7 @@ const ModalPoup = ({visible, children}) => {
 
 const ProfileScreen =(({ navigation }) =>{
   const [visibleSexe, setVisibleSexe] = React.useState(false);
+  const [image, setImage] = useState(null);
 
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
@@ -67,7 +69,21 @@ const ProfileScreen =(({ navigation }) =>{
     setFemme(true);
   }
 
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
   renderInner = () => (
 
     <View style={styles.panel}>
@@ -82,7 +98,7 @@ const ProfileScreen =(({ navigation }) =>{
          <TouchableOpacity style={styles.panelButton}>
              <Text style={styles.panelButtonTitle}>Prendre une photo</Text>
          </TouchableOpacity>
-         <TouchableOpacity style={styles.panelButton}>
+         <TouchableOpacity onPress={pickImage} style={styles.panelButton}>
              <Text style={styles.panelButtonTitle}>Telecharger photo</Text>
          </TouchableOpacity>
          <TouchableOpacity style={styles.panelButton} onPress={()=>bs.current.snapTo(1)}>
