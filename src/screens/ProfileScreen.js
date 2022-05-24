@@ -3,6 +3,7 @@ import {Text ,View, StyleSheet, TouchableOpacity,SafeAreaView,ScrollView ,ImageB
 import { Icon } from 'react-native-elements';
 import Animated from 'react-native-reanimated';
 import * as ImagePicker from 'expo-image-picker';
+import { Camera } from 'expo-camera';
 
 import {  Avatar,Title,Caption,TouchableRipple } from 'react-native-paper'
 import CustumInput from '../components/CustumInput';
@@ -58,6 +59,27 @@ const ProfileScreen =(({ navigation }) =>{
   const [femme,setFemme]=useState(false);
   const [email, setEmail] = React.useState("");
   const [sexe, setSexe] = React.useState("Homme");
+
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+const [camera, setCamera] = useState(null);
+const [type, setType] = useState(Camera.Constants.Type.back);
+
+useEffect(() => {
+  (async () => {
+    const cameraStatus = await Camera.requestPermissionsAsync();
+    setHasCameraPermission(cameraStatus.status === 'granted');
+})();
+}, []);
+
+const takePicture = async () => {
+  if(camera){
+      const data = await camera.takePictureAsync(null)
+      setImage(data.uri);
+  }
+}
+if (hasCameraPermission === false) {
+  return <Text>No access to camera</Text>;
+}
   const genderHomme = () =>{
 
     setHomme(true);
@@ -120,240 +142,28 @@ const ProfileScreen =(({ navigation }) =>{
 
   
   return (
-
-    <SafeAreaView style={{
-      paddingTop:40,
-  }}>
-    <BottomSheet
-        ref={bs}
-        snapPoints={[330, 0]}
-        renderContent={renderInner}
-        renderHeader={renderHeader}
-        initialSnap={1}
-        callbackNode={fall}
-        enabledGestureInteraction={true}
-      />
-       <ModalPoup visible={visibleSexe}>
-        <View style={{alignItems: 'center'}}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={() => setVisibleSexe(false)}>
-              <Image
-                source={require('../assets/X.png')}
-                style={{height: 30, width: 30}}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={{alignItems: 'center'}}>
-        
-        </View>
-        <TouchableOpacity onPress={()=>{
-          setSexe("Homme")
-          setVisibleSexe(false)
-        }} style={styles.btnSexe}>
-        <Text style={{
-          textAlign:'center',
-          fontWeight:'bold',
-          fontSize:16,
-          color:'white',
-        }}>Homme</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{
-           setSexe("Femme")
-           setVisibleSexe(false)
-        }} style={styles.btnSexe}>
-          <Text style={{
-          textAlign:'center',
-          fontWeight:'bold',
-          fontSize:16,
-          color:'white',
-        }}>Femme</Text>
-               </TouchableOpacity>
-
-      
-      </ModalPoup>
-        <ScrollView>
-
-    <View style={{
-      backgroundColor:'#D9D9D9',
-      height:200,
-    }}>
-      <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
-
-       <ImageBackground
-          source={{
-            uri:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLvdLq5DN6TMnCLHtc9E9DyJQyaRJpPfFFdJ75JF0eOcL9iQzX2ErYeqz1cdV8ABkUtXY&usqp=CAU',
-          }}
-          //borderRadius style will help us make the Round Shape Image
-          style={{ width: 100, height: 100, borderRadius: 45 / 2,alignSelf:'center',
-        marginTop:40, }}
-        ><View style ={{
-          flex:1,
-          justifyContent:'center',
-          alignItems:'center',
-        }}>
-          <Icon name="camera"    type={'feather'} size={35} color="#fff" style={{
-
-            opacity:0.66,
-            alignItems:'center',
-            justifyContent:'center',
-            borderWidth:0.5,
-            borderColor:'#fff',
-            borderRadius:9,
-
-            
-          }}/>
-      
-        </View>
-       </ImageBackground> 
-              </TouchableOpacity>
-
-      <TouchableOpacity
-      onPress={()=>{
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'StartScreen' }],
-        })
-      }}
-                style={{position:'absolute',top:20,right:20}}
-
-      >
-  <Icon 
-          name={'power'} 
-          type={'feather'}
-          color={'#623262'}
-          size={30}
-          
-          />
-      </TouchableOpacity>
-      <Text style={{
-        textAlign:'center',
-        marginTop:20,
-        color:'#623262',
-        fontSize:20,
-      }}>Islem Test</Text>
-           <Text style={{
-        textAlign:'center',
-       
-        color:'#623262',
-        fontSize:16,
-        fontWeight:'bold'
-      }}>Islem@test.com</Text>
+<View style={{ flex: 1}}>
+   <View style={styles.cameraContainer}>
+       <Camera 
+            ref={ref => setCamera(ref)}
+            style={styles.fixedRatio} 
+            type={type}
+            ratio={'1:1'} />
     </View>
-    <CustumInput onChangeText={(value)=>{
-      setFirstName(value)
-    }} onCancel={()=>{
-      setFirstName("")
-    }} from={"Profile"} value={firstName} editable={true} placeholder={"Prénom"} title={'Prénom'}/>
-    <CustumInput onChangeText={(value)=>{
-      setLastName(value)
-    }} onCancel={()=>{
-      setLastName("")
-    }} from={"Profile"} value={lastName} editable={true} placeholder={"Nom"} title={'Nom'}/>
-    <CustumInput onChangeText={(value)=>{
-      setPhoneNumber(value)
-    }} onCancel={()=>{
-      setPhoneNumber("")
-    }} from={"Profile"} value={phoneNumber} inputType={'numeric'} editable={true} placeholder={"Téléphone"} title={'Téléphone'}/>
-
-    <CustumInput onChangeText={(value)=>{
-      setEmail(value)
-    }} onCancel={()=>{
-      setEmail("")
-    }} from={"Profile"} value={email} inputType={'email-address'} editable={true} placeholder={"Email"} title={'Email'}/>
-    <View style={{
-        paddingHorizontal:10,
-        marginBottom:5
-      }}>
-          <Text style={{
-            color:'#1935F1',
-            fontWeight:'bold',
-            paddingHorizontal:10,
-            marginBottom:5
-        }}>Sexe</Text>
-      
-        <CheckBox 
-        title="Homme"
-        checked={homme}
-        containerStyle ={{   width: '100%',
-        marginTop: 10,
-      
-        backgroundColor: '#e8e8e8'}}
-        checkedIcon="dot-circle-o"
-        uncheckedIcon="circle-o"
-        onPress={genderHomme}
-      
-      />
-       
-   
-     
-
-     <CheckBox 
-        title="Femme"
-        checked={femme}
-        checkedIcon="dot-circle-o"
-        uncheckedIcon="circle-o"
-        containerStyle ={{   width: '100%',
-        marginTop: 10,
-        marginBottom: 10,
-        backgroundColor: '#e8e8e8'}}
-        onPress={genderFemme}
-      />
-      </View>
-      <TouchableOpacity onPress={() => {}} style={{
-            backgroundColor:'#623262',
-            padding:10,
-            borderRadius:10,
-            width:'90%',
-            marginBottom:10,
-            alignSelf:'center',
-
-          }}>
-            <Text style={{
-              color:'white',
-              fontWeight:'bold',
-              textAlign:'center',
-            }}>Sauvegarder</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('ChangermotpasseScreen')} style={{
-            backgroundColor:'#623262',
-            padding:10,
-            borderRadius:10,
-            width:'90%',
-            marginBottom:50,
-            alignSelf:'center',
-
-          }}>
-            <Text style={{
-              color:'white',
-              fontWeight:'bold',
-              textAlign:'center',
-            }}>Changer Mot de passe</Text>
-          </TouchableOpacity>
-  
-  
-      
-      </ScrollView>
-      <TouchableOpacity onPress={()=>{
-       navigation.navigate("NotificationScreen")
-     }}  style={{
-              width:40,
-              height:40,
-              borderRadius:40/2,
-              backgroundColor:'green',
-              position:'absolute',
-              bottom:60,
-              right:40
-            }}><Icon 
-          name={'notifications-none'} 
-          type={'material-icons'}
-          color={'#FFFFFF'}
-          size={35}
-          
-          /></TouchableOpacity>
-         
-    </SafeAreaView>
+    <Button
+            title="Flip Image"
+            onPress={() => {
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+              );
+            }}>
+     </Button>
+     <Button title="Take Picture" onPress={() => takePicture()} />
+     {image && <Image source={{uri: image}} style={{flex:1}}/>}
+</View>
+    
   );
           });
 

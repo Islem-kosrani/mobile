@@ -14,9 +14,36 @@ import { passwordValidator } from '../helpers/passwordValidator'
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
-
+  const getMoviesFromApiAsync = async () => {
+    console.log("Moussa")
+    try {
+      const response = await fetch(
+        'https://reactnative.dev/movies.json'
+      );
+      const json = await response.json();
+      return json.movies;
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const onLoginPressed = () => {
-    const emailError = emailValidator(email.value)
+    fetch('http://10.0.2.2/add.php?UserName=tescdcdcdt&Password=cdcdcdcdcdcdccdcdd',{
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+      
+    })
+    .then((response) => response.json()) // get response, convert to json
+    .then((json) => {
+      console.log(json)
+      
+    })
+    .catch((error) => alert(error)) // display errors
+    .finally(() => {}); // change loading state
+  
+   /* const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value,password.value)
     if (emailError || passwordError) {
       setEmail({ ...email, error: emailError })
@@ -26,7 +53,7 @@ export default function LoginScreen({ navigation }) {
     navigation.reset({
       index: 0,
       routes: [{ name: 'Dashboard' }],
-    })
+    })*/
   }
 
   return (
