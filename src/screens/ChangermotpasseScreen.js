@@ -10,9 +10,23 @@ import BackButton from '../components/BackButton'
 import { theme } from '../core/theme'
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
-
+import { Alert} from 'react-native'
 
 export default function ChangermotpasseScreen({ navigation }) {
+
+
+  
+  function showAlert(){
+
+    Alert.alert("Votre mot passe sera changé","Merci  ",
+  [ 
+    {
+      Text:"",onPress:() =>console.log("")}  ,
+  
+  ]
+  
+    )
+   }
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
   const [confirmpassword, setConfirmPassword] = useState({ value: '', error: '' })
@@ -56,7 +70,12 @@ export default function ChangermotpasseScreen({ navigation }) {
         secureTextEntry
       />
       
-      <Button mode="contained" onPress={onLoginPressed}>
+      <Button mode="contained" 
+
+     
+      onPress={showAlert}
+      style={{ marginTop: 16 }}
+      >
    Changer
       </Button>
      

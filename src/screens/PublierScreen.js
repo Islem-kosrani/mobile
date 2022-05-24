@@ -207,10 +207,10 @@ export default function PublierScreen({ navigation }) {
 
           <CustumInput onChangeText={(text)=>{
             setPoids(text)
-          }} editable={true} placeholder={"Poids(kg)"} title={'Poids(kg)'}/>
+          }} editable={true}  inputType={'numeric'}placeholder={"Poids(kg)"} title={'Poids(kg)'}   />
           <CustumInput onChangeText={(text)=>{
             setPrix(text)
-          }} editable={true} placeholder={"Prix/kg"} title={'Prix/kg'}/>
+          }} editable={true} inputType={'numeric'} placeholder={"Prix/kg"} title={'Prix/kg'}/>
           <ModalPoup visible={visible}>
         <View style={{alignItems: 'center'}}>
           <View style={styles.header}>
@@ -229,7 +229,8 @@ export default function PublierScreen({ navigation }) {
         <Text style={{marginVertical: 30, fontSize: 20, textAlign: 'center'}}>
         Félicitations votre annonce est ajoutée      </Text>
       </ModalPoup>
-          <TouchableOpacity onPress={() =>{
+          <TouchableOpacity   onPress={()=>{
+                 navigation.navigate("Dashboard")
             
             if( parseRequiredErrorType(depart.label)
             ||parseRequiredErrorType(arrivee.label)

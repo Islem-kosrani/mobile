@@ -9,6 +9,7 @@ import Button from '../components/Button'
 import TextInput from '../components/TextInput'
 import BackButton from '../components/BackButton'
 import { theme } from '../core/theme'
+import { cinValidator } from '../helpers/cinValidator'
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import { nameValidator } from '../helpers/nameValidator'
@@ -30,8 +31,7 @@ export default function RegisterScreen({ navigation }) {
 
   )
  }
- bs = React.createRef();
- fall = new Animated.Value(1);
+
  const [accept,setAccept]=useState(false);
   const [homme,setHomme]=useState(false);
   const [femme,setFemme]=useState(false);
@@ -43,30 +43,7 @@ export default function RegisterScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
   const [confirmpassword, setConfirmPassword] = useState({ value: '', error: '' })
-    renderInner = () => (
-
-    <View style={styles.panel}>
-         <View style={{alignItems:'center'}}>
-       
-             <Text style={styles.panelTitle}>telecharger photo</Text>
-             <Text style={styles.panelSubtitle}>choisir votre photo      </Text>
-        
-         </View>
-
-
-         <TouchableOpacity style={styles.panelButton}>
-             <Text style={styles.panelButtonTitle}>Prendre une photo</Text>
-         </TouchableOpacity>
-         <TouchableOpacity style={styles.panelButton}>
-             <Text style={styles.panelButtonTitle}>Telecharger photo</Text>
-         </TouchableOpacity>
-         <TouchableOpacity style={styles.panelButton} onPress={()=>bs.current.snapTo(1)}>
-             <Text style={styles.panelButtonTitle}>Annuler</Text>
-         </TouchableOpacity>
-
-
-</View>
-  );
+    
   const genderHomme = () =>{
 
     setHomme(true);
@@ -79,13 +56,14 @@ export default function RegisterScreen({ navigation }) {
   }
 
   const onSignUpPressed = () => {
-    
+    const cinError = cinValidator(cin.value)
     const nameError = nameValidator(name.value)
     const prenomError = prenomValidator(prenom.value)
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value,confirmpassword.value)
     const confirmpasswordError = confirmpasswordValidator(confirmpassword.value,password.value)
-    if (emailError || passwordError || nameError ||prenomError ||confirmpasswordError ) {
+    if (cinError || emailError || passwordError || nameError ||prenomError ||confirmpasswordError ) {
+      setCin({...cin, error:cinError})
       setName({ ...name, error: nameError })
       setPrenom({ ...prenom, error: prenomError })
       setEmail({ ...email, error: emailError })
@@ -100,6 +78,7 @@ export default function RegisterScreen({ navigation }) {
   }
 
   return (
+    
     <ScrollView style={{
       backgroundColor: theme.colors.surface,
     }}>

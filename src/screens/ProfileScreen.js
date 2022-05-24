@@ -89,17 +89,15 @@ const ProfileScreen =(({ navigation }) =>{
     <View style={styles.panel}>
          <View style={{alignItems:'center'}}>
        
-             <Text style={styles.panelTitle}>telecharger photo</Text>
+             <Text style={styles.panelTitle}>Télécharger photo</Text>
              <Text style={styles.panelSubtitle}>choisir votre photo      </Text>
         
          </View>
 
 
-         <TouchableOpacity style={styles.panelButton}>
-             <Text style={styles.panelButtonTitle}>Prendre une photo</Text>
-         </TouchableOpacity>
+        
          <TouchableOpacity onPress={pickImage} style={styles.panelButton}>
-             <Text style={styles.panelButtonTitle}>Telecharger photo</Text>
+             <Text style={styles.panelButtonTitle}>Télécharger photo</Text>
          </TouchableOpacity>
          <TouchableOpacity style={styles.panelButton} onPress={()=>bs.current.snapTo(1)}>
              <Text style={styles.panelButtonTitle}>Annuler</Text>
